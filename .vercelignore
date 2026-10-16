@@ -1,0 +1,3 @@
+*.php
+erpnext-config*.php
+router.php

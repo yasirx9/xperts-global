@@ -1,0 +1,36 @@
+# ==========================================================
+# 🧩 Clean URLs Configuration for Xperts Global
+# Removes .html from all URLs (e.g., /about.html → /about)
+# Works perfectly for static HTML websites on Apache servers
+# ==========================================================
+
+# Turn on URL rewriting
+RewriteEngine On
+
+# Set your base directory (usually root)
+RewriteBase /
+
+# Case studies were removed: send old links and bookmarks to the home page (301)
+RewriteRule ^case-studies(-single)?(\.html)?/?$ / [R=301,L,NC]
+
+# ✅ Rule 1: Redirect old .html URLs to extensionless (for SEO)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# ✅ Rule 2: Allow requests without .html to load the correct file
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# ✅ Rule 3: Ensure the homepage works without index.html
+DirectoryIndex index.html
+
+# Optional: prevent direct access to .htaccess file
+<Files ".htaccess">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+# ==========================================================
+# End of Configuration
+# ==========================================================

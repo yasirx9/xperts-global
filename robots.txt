@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block access to unnecessary system folders
+Disallow: /test/
+Disallow: /mailer.php
+
+# Prevent crawling of sensitive files
+Disallow: /404.html
+
+
+# Sitemap location
+Sitemap: https://www.xperts-global.com/sitemap.xml
