@@ -12,6 +12,7 @@ RewriteBase /
 
 # Case studies were removed: send old links and bookmarks to the home page (301)
 RewriteRule ^case-studies(-single)?(\.html)?/?$ / [R=301,L,NC]
+RewriteRule ^(ai-learning-service|broadband-service)(\.html)?/?$ /service [R=301,L,NC]
 
 # ✅ Rule 1: Redirect old .html URLs to extensionless (for SEO)
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]

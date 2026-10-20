@@ -1,4 +1,10 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/ai-learning-service", "destination": "/service", "permanent": true },
+    { "source": "/broadband-service", "destination": "/service", "permanent": true },
+    { "source": "/case-studies", "destination": "/", "permanent": true },
+    { "source": "/case-studies-single", "destination": "/", "permanent": true }
+  ]
 }
