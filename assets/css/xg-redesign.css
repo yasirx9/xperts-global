@@ -2079,7 +2079,8 @@ html.lenis, html.lenis body { height: auto; }
 .xg-vtesti__play:hover .xg-vtesti__btn { transform: scale(1.1); }
 .xg-vtesti__play:focus-visible { outline: none; box-shadow: var(--xg-focus); }
 .xg-vtesti__card figcaption { padding: 16px 4px 0; }
-.xg-vtesti__card figcaption strong { display: block; font-weight: 500; font-size: 17px; color: var(--xg-ink); }
+.xg-vtesti__card figcaption strong { display: block; font-weight: 500; font-size: 28px; line-height: 1.2; margin-bottom: 4px; color: var(--xg-red) !important; }
+@media (max-width: 575px) { .xg-vtesti__card figcaption strong { font-size: 25px; } }
 .xg-vtesti__card figcaption span { font-size: 14px; color: var(--xg-muted); }
 .xg-vtesti__quote { font-size: 15.5px; line-height: 1.6; color: var(--xg-text); margin: 0 0 10px; }
 .xg-vmodal { padding: 0; border: 0; background: transparent; max-width: min(92vw, 440px); width: 100%; overflow: visible; }
