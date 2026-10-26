@@ -2166,3 +2166,71 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .xg-svc2-card, .xg-svc2-card__media > img { transition: none; }
 }
+
+/* =====================================================================
+   30. Typography system (Bricolage Grotesque display · Instrument Sans body · JetBrains Mono labels)
+   ===================================================================== */
+:root {
+  --xg-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --xg-body: "Instrument Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --xg-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --xg-font: var(--xg-body);
+  --xg-font-medium: var(--xg-body);
+  --font-primary: var(--xg-body);
+  --font-secondary: var(--xg-body);
+  --font-medium: var(--xg-body);
+  --xg-step--1: clamp(12.8px, 12.3px + .15vw, 14px);
+  --xg-step-0: clamp(16px, 15.4px + .2vw, 18px);
+  --xg-step-1: clamp(19.2px, 17.6px + .5vw, 24px);
+  --xg-step-2: clamp(25.6px, 20.8px + 1.2vw, 38.4px);
+  --xg-step-3: clamp(36.8px, 25.6px + 3vw, 70.4px);
+}
+body { font-family: var(--xg-body); font-size: var(--xg-step-0); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+p, li, dd, blockquote, td, th { font-family: var(--xg-body); }
+input, textarea, select, button { font-family: inherit; }
+
+/* display headings */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .xg-h1, .xg-h2, .title,
+.xg-page-hero__title, .xg-hero__title, .xg-final__title, .xg-cta-band__title, .xg-ribbon__title, .xg-footer__top-title {
+  font-family: var(--xg-display) !important;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+h1, .xg-h1, .xg-section h1, .xg-page-hero__title, .xg-hero__title, .xg-final__title {
+  font-weight: 800 !important; line-height: 1.04;
+}
+.xg-page-hero__title, .xg-section h1 { font-size: var(--xg-step-3); }
+h2, .xg-h2, .xg-section h2, .xg-cta-band__title, .xg-footer__top-title { font-weight: 800 !important; line-height: 1.08; }
+.xg-h2, .xg-section h2 { font-size: clamp(30.4px, 21.6px + 2vw, 48px); }
+h3, h4, h5, h6, .title, .xg-ribbon__title { font-weight: 600 !important; line-height: 1.2; }
+.xg-hl { font-weight: inherit; }
+
+/* lead / body copy */
+.xg-page-hero__sub, .xg-hero__lead, .xg-prod__lead, .xg-final__text, .xg-cta-band__text { font-family: var(--xg-body); font-size: var(--xg-step-1); line-height: 1.5; }
+.xg-section p, .xg-svc2-card__body p, .xg-case dd, .xg-team__intro { line-height: 1.65; }
+
+/* mono labels */
+.xg-eyebrow, .xg-mega__title, .xg-footer__h, .xg-crumbs, .xg-sc-caption__tag, .xg-prod__num, .xg-pteaser__num, .xg-case__tag,
+.xg-svc2-points span, .xg-cap__title, .xg-hero__strip-label, .xg-ab-card__num, .xg-svc-side__title, .xg-team__role,
+.xg-pricing__label, .xg-svc-group__title span, .xg-case dt, .xg-mock__name, .xg-mock__kpis small, .xg-footer__info b, .xg-footer__copy {
+  font-family: var(--xg-mono) !important;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.xg-eyebrow { font-size: var(--xg-step--1); letter-spacing: .12em; font-weight: 500; }
+.xg-team__role, .xg-case dt { font-size: 12.5px; }
+.xg-footer__copy { font-size: 11.8px; }
+.xg-mock__name, .xg-mock__kpis small { letter-spacing: .04em; }
+
+/* big numbers & prices */
+.xg-svc2-group__num, .xg-prod__price strong, .xg-pricing__amount strong, .xg-pteaser__price strong, .xg-cap__badge strong, .xg-mock__timer {
+  font-family: var(--xg-display) !important; font-weight: 800; letter-spacing: -.03em;
+}
+
+/* buttons & nav */
+.xg-btn, .xg-btn--light, .xg-btn--ghost { font-family: var(--xg-body); font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 15.2px; }
+.xg-link { font-family: var(--xg-body); font-weight: 600; }
+.xg-nav__link, .xg-mega__text strong, .mainmenu a { font-family: var(--xg-body) !important; font-weight: 500; }
+.xg-mega__text strong { font-weight: 600; }
+.xg-svc2-jump a, .xg-svc-products a { font-family: var(--xg-body); font-weight: 500; }
+.xg-hero__lead, .xg-page-hero__sub { max-width: 52ch; }
