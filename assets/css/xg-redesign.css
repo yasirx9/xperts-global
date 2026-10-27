@@ -2343,6 +2343,7 @@ h3, h4, h5, h6, .title, .xg-ribbon__title { font-weight: 600 !important; line-he
 
 /* home: HRMS feature inside products teaser */
 .xg-pfeat { display: grid; grid-template-columns: 1fr 1.25fr; gap: 56px; align-items: center; margin-bottom: 28px; padding: 44px; border-radius: 16px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); position: relative; z-index: 1; }
+.xg-pfeat--text { grid-template-columns: 1fr; }
 .xg-pfeat__tag { font-family: var(--xg-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--xg-red-200); }
 .xg-pfeat h3 { font-size: clamp(28px, 2.4vw, 38px); margin: 12px 0 12px; color: #fff; }
 .xg-pfeat p { margin: 0 0 20px; }
