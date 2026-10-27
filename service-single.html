@@ -28,8 +28,9 @@
     <link rel="stylesheet preload" href="assets/css/plugins/metismenu.css" as="style" media="print"
         onload="this.media='all'">
     <link rel="stylesheet preload" href="assets/css/style.css" as="style">
-        <script>
-      (function(){var d=document.documentElement;try{if(!sessionStorage.getItem('xg-visited')){d.classList.add('xg-first');sessionStorage.setItem('xg-visited','1');}}catch(e){}
+        <script src="/assets/js/xg-config.js"></script>
+    <script>
+      (function(){var d=document.documentElement;var preloaderEnabled=!!(window.XG_CONFIG&&window.XG_CONFIG.preloader===true);if(preloaderEnabled){d.classList.add('xg-first');}
       try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('xg-motion');setTimeout(function(){if(!window.__xgMotion){d.classList.remove('xg-motion','xg-first');}},4000);}}catch(e){}})();
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,7 +1,7 @@
 /*!
  * Xperts Global — global motion layer (xg-motion.js)
  * 1 Lenis smooth scroll (+ GSAP ScrollTrigger sync)  2 data-xg reveal system  3 split headings
- * 4 first-visit loader  5 custom cursor  6 page-transition curtain
+ * 4 optional configurable loader  5 custom cursor  6 page-transition curtain
  */
 (function () {
   "use strict";
@@ -87,7 +87,7 @@
     });
   }
 
-  /* ---------- 4. first-visit loader ---------- */
+  /* ---------- 4. optional configurable loader ---------- */
   var loader = document.querySelector(".xg-loader");
   function revealed() { try { document.dispatchEvent(new CustomEvent("xg:revealed")); } catch (e) {} }
   if (loader && root.classList.contains("xg-first")) {
