@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- favicon (Xperts Global logo) -->
+    <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/favicon/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="assets/favicon/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <meta name="theme-color" content="#0B1A33" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="How Xperts Global built its own Sales CRM around its sales team, with lead tracking, conversations, commissions and reporting."
+    />
+<title>How We Built Our Own CRM | Xperts Global Sales CRM</title>
+    <link rel="canonical" href="https://www.xperts-global.com/sales-crm" />
+    <link rel="stylesheet preload" href="assets/css/vendor/bootstrap.min.css" as="style" media="print"
+        onload="this.media='all'">
+    <link rel="stylesheet preload" href="assets/css/plugins/fontawesome.css" as="style" media="print"
+        onload="this.media='all'">
+    <link rel="stylesheet preload" href="assets/css/plugins/magnifying-popup.css" as="style" media="print"
+        onload="this.media='all'">
+    <link rel="stylesheet preload" href="assets/css/plugins/swiper.css" as="style" media="print"
+        onload="this.media='all'">
+    <link rel="stylesheet preload" href="assets/css/plugins/metismenu.css" as="style" media="print"
+        onload="this.media='all'">
+    <link rel="stylesheet preload" href="assets/css/style.css" as="style">
+        <script>
+      (function(){var d=document.documentElement;try{if(!sessionStorage.getItem('xg-visited')){d.classList.add('xg-first');sessionStorage.setItem('xg-visited','1');}}catch(e){}
+      try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('xg-motion');setTimeout(function(){if(!window.__xgMotion){d.classList.remove('xg-motion','xg-first');}},4000);}}catch(e){}})();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" />
+    <link rel="stylesheet" href="assets/css/xg-redesign.css" />
+</head>
+
+<body class="xg-has-dark-hero">
+    <div class="xg-loader" aria-hidden="true">
+      <div class="xg-loader__panel xg-loader__panel--red"></div>
+      <div class="xg-loader__panel xg-loader__panel--navy">
+        <div class="xg-loader__mark"><div class="xg-pixels" data-pattern="10001|01010|00100|01010|10001" data-seed="3"></div><span class="xg-loader__word">Xperts Global</span></div>
+      </div>
+    </div>
+    <!-- header start (xg redesign) -->
+    <div class="xg-progress" aria-hidden="true"><span class="xg-progress__bar"></span></div>
+    <div class="xg-header-wrap">
+      <header class="xg-header xg-header--over-dark" id="xg-header">
+        <div class="container xg-header__inner">
+          <a href="/" class="xg-header__logo" aria-label="Xperts Global home">
+            <img decoding="async" class="xg-logo--dark" src="assets/Xperts Global Logo/SVG for Website/Header logo 2.svg" alt="Xperts Global" width="230" height="56" />
+            <img decoding="async" class="xg-logo--light" src="assets/Xperts Global Logo/SVG for Website/Header logo 2 white.svg" alt="" aria-hidden="true" width="230" height="56" />
+          </a>
+          <nav class="xg-nav" aria-label="Main">
+            <ul class="xg-nav__list">
+              <li><a class="xg-nav__link" href="/">Home</a></li>
+              <li><a class="xg-nav__link" href="/about">About</a></li>
+              <li class="xg-nav__item--mega">
+                <a class="xg-nav__link" href="/service" aria-haspopup="true" aria-expanded="false" aria-controls="xg-mega">Services <svg class="xg-nav__chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+                <div class="xg-mega" id="xg-mega" role="region" aria-label="Services">
+                  <div class="xg-mega__grid">
+                  <div class="xg-mega__col">
+                    <p class="xg-mega__title">Sales &amp; Support</p>
+                    <ul class="xg-mega__list">
+                      <li style="--i:0"><a class="xg-mega__item" href="/service#b2b-b2c-sales"><span class="xg-mega__icon"><img decoding="async" src="assets/images/service/icons/01.svg" alt="" width="22" height="22" loading="lazy" /></span><span class="xg-mega__text"><strong>B2B &amp; B2C Sales</strong><small>Inbound &amp; outbound teams that generate leads and close deals for business and consumer markets.</small></span></a></li>
+                      <li style="--i:1"><a class="xg-mega__item" href="/service#customer-chat-support"><span class="xg-mega__icon"><img decoding="async" src="assets/images/service/icons/02.svg" alt="" width="22" height="22" loading="lazy" /></span><span class="xg-mega__text"><strong>Customer &amp; Chat Support</strong><small>24/7 voice, email and live-chat support that resolves issues fast and builds trust.</small></span></a></li>
+                      <li style="--i:2"><a class="xg-mega__item" href="/service#partnership-approach"><span class="xg-mega__icon"><img decoding="async" src="assets/images/service/icons/05.svg" alt="" width="22" height="22" loading="lazy" /></span><span class="xg-mega__text"><strong>Partnership Approach</strong><small>Flexible models that adapt to your business goals and growth journey.</small></span></a></li>
+                    </ul>
+                  </div>
+                  <div class="xg-mega__col">
+                    <p class="xg-mega__title">Development</p>
+                    <ul class="xg-mega__list">
+                      <li style="--i:3"><a class="xg-mega__item" href="/service#custom-crms-saas"><span class="xg-mega__icon"><img decoding="async" src="assets/images/service/icons/09.svg" alt="" width="22" height="22" loading="lazy" /></span><span class="xg-mega__text"><strong>Custom CRMs &amp; SaaS</strong><small>CRM and SaaS platforms built around your workflow.</small></span></a></li>
+                      <li style="--i:4"><a class="xg-mega__item" href="/service#software-application-development"><span class="xg-mega__icon"><img decoding="async" src="assets/images/service/icons/03.svg" alt="" width="22" height="22" loading="lazy" /></span><span class="xg-mega__text"><strong>Software &amp; Application Development</strong><small>Custom, scalable, and secure applications designed to match your business needs.</small></span></a></li>
+                      <li style="--i:5"><a class="xg-mega__item" href="/products"><span class="xg-mega__icon"><img decoding="async" src="assets/images/service/icons/07.svg" alt="" width="22" height="22" loading="lazy" /></span><span class="xg-mega__text"><strong>Our Products</strong><small>Sales CRM, HRMS CRM and Dial Intelligence.</small></span></a></li>
+                    </ul>
+                  </div>
+                  <div class="xg-mega__col">
+                    <p class="xg-mega__title">Connectivity &amp; Quality</p>
+                    <ul class="xg-mega__list">
+                      <li style="--i:6"><a class="xg-mega__item" href="/service#network-infrastructure-it"><span class="xg-mega__icon"><img decoding="async" src="assets/images/service/icons/08.svg" alt="" width="22" height="22" loading="lazy" /></span><span class="xg-mega__text"><strong>Network Infrastructure &amp; IT Services</strong><small>Secure networks, servers and day-to-day IT support that keep your business running.</small></span></a></li>
+                      <li style="--i:7"><a class="xg-mega__item" href="/service#quality-assurance-compliance"><span class="xg-mega__icon"><img decoding="async" src="assets/images/service/icons/06.svg" alt="" width="22" height="22" loading="lazy" /></span><span class="xg-mega__text"><strong>Quality Assurance &amp; Compliance</strong><small>Maintain high standards of service delivery while ensuring data security</small></span></a></li>
+                    </ul>
+                  </div>
+                  <div class="xg-mega__foot">
+                    <a class="xg-link" href="/service">All Services</a>
+                    <div class="xg-pixels xg-pixels--static" data-seed="5" data-cols="8" data-rows="2"></div>
+                  </div>
+                </div>
+              </li>
+              <li><a class="xg-nav__link" href="/products">Products</a></li>
+              <li><a class="xg-nav__link" href="/pricing">Pricing</a></li>
+              <li><a class="xg-nav__link" href="/contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="xg-header__actions">
+            <a href="/contact" class="xg-btn xg-header__cta">Get in touch</a>
+            <button type="button" class="menu-btn-toggle xg-burger" aria-label="Open menu" aria-controls="side-bar" aria-expanded="false"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+    </div>
+    <!-- header end -->
+
+    <div id="side-bar" class="side-bar header-two xg-offcanvas" role="dialog" aria-label="Menu" dir="ltr">
+      <button class="close-icon-menu" aria-label="footer_Button">
+        <i class="far fa-times"></i>
+      </button>
+      <img decoding="async" class="xg-offcanvas__logo" src="assets/Xperts Global Logo/SVG for Website/Header logo 2 white.svg" alt="Xperts Global" />
+      <div class="mobile-menu-main">
+        <nav class="nav-main mainmenu-nav mt--30">
+          <ul class="mainmenu metismenu" id="mobile-menu-active">
+            <li><a href="/" class="main">Home</a></li>
+            <li><a href="/about" class="main">About</a></li>
+            <li><a href="/service" class="main">Services</a></li>
+            <li><a href="/products" class="main">Products</a></li>
+            <li><a href="/pricing" class="main">Pricing</a></li>
+            <li><a href="/contact" class="main">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="/contact" class="xg-btn xg-offcanvas__cta">Get in touch</a>
+        <!-- social area start -->
+        <div class="rts-social-border-area right-sidebar mt--80">
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/share/1FEavzS9vF/" aria-label="social link" data-description="social"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/company/xpertsglobalinc/" aria-label="social link" data-description="social"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+        <!-- social area end -->
+      </div>
+      <!-- mobile menu area end -->
+    </div>
+
+
+
+
+    <!-- Sales CRM hero -->
+    <section class="xg-page-hero xg-hero-dark xg-hrms-hero">
+      <div class="xg-hero__bg" aria-hidden="true"><div class="xg-hero__mesh"><span></span><span></span><span></span></div><div class="xg-hero__shade"></div></div>
+      <div class="xg-pixels xg-pixels--b" data-seed="29"></div>
+      <div class="container xg-page-hero__inner">
+        <nav aria-label="Breadcrumb"><ol class="xg-crumbs"><li><a href="/">Home</a></li><li><a href="/products">Products</a></li><li aria-current="page">Sales CRM</li></ol></nav>
+        <span class="xg-eyebrow">Xperts Global Sales CRM</span>
+        <h1 class="xg-page-hero__title">How We Built Our Own <span class="xg-hl">CRM</span> at Xperts Global</h1>
+        <p class="xg-page-hero__sub">A sales platform shaped by the people who use it every day, bringing leads, follow-ups and client conversations into one place.</p>
+        <div class="xg-hrms-hero__cta"><a href="/contact" class="xg-btn">Request a demo</a><a href="#story" class="xg-btn--light">Explore the story</a></div>
+      </div>
+    </section>
+
+    <!-- Sales CRM theme gallery -->
+    <section class="xg-section xg-hrms-gallery" aria-label="Sales CRM dashboard themes">
+      <div class="container">
+        <div class="xg-gal" data-interval="8000">
+          <div class="xg-browser xg-gal__frame">
+            <div class="xg-browser__bar" aria-hidden="true"><span class="xg-browser__dots"><i></i><i></i><i></i></span><span class="xg-browser__url">crm.xperts-global.com</span></div>
+            <div class="xg-gal__stage" aria-live="polite">
+              <figure class="xg-gal__slide is-active" data-caption="Dashboard theme — Blue"><img src="assets/images/products/sales-crm/01.png" alt="Xperts Global Sales CRM dashboard in the blue theme" width="1600" height="900" fetchpriority="high" decoding="async" /></figure>
+              <figure class="xg-gal__slide" data-caption="Dashboard theme — Rose" aria-hidden="true"><img src="assets/images/products/sales-crm/02.png" alt="Xperts Global Sales CRM dashboard in the rose theme" width="1600" height="900" loading="lazy" decoding="async" /></figure>
+              <figure class="xg-gal__slide" data-caption="Dashboard theme — Violet" aria-hidden="true"><img src="assets/images/products/sales-crm/03.png" alt="Xperts Global Sales CRM dashboard in the violet theme" width="1600" height="900" loading="lazy" decoding="async" /></figure>
+              <figure class="xg-gal__slide" data-caption="Dashboard theme — Red" aria-hidden="true"><img src="assets/images/products/sales-crm/04.png" alt="Xperts Global Sales CRM dashboard in the red theme" width="1600" height="900" loading="lazy" decoding="async" /></figure>
+              <figure class="xg-gal__slide" data-caption="Dashboard theme — Dark" aria-hidden="true"><img src="assets/images/products/sales-crm/05.png" alt="Xperts Global Sales CRM dashboard in the dark theme" width="1600" height="900" loading="lazy" decoding="async" /></figure>
+              <figure class="xg-gal__slide" data-caption="Dashboard theme — Slate" aria-hidden="true"><img src="assets/images/products/sales-crm/06.png" alt="Xperts Global Sales CRM dashboard in the slate theme" width="1600" height="900" loading="lazy" decoding="async" /></figure>
+            </div>
+            <span class="xg-gal__progress" aria-hidden="true"><i></i></span>
+          </div>
+          <div class="xg-gal__bar">
+            <p class="xg-gal__caption"><span class="xg-gal__count">01 / 06</span><span class="xg-gal__text">Dashboard theme — Blue</span></p>
+            <div class="xg-gal__nav">
+              <button type="button" class="xg-gal__btn xg-gal__prev" aria-label="Previous theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+              <button type="button" class="xg-gal__btn xg-gal__pause" aria-label="Pause slideshow" aria-pressed="false"><svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+              <button type="button" class="xg-gal__btn xg-gal__next" aria-label="Next theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+          </div>
+          <div class="xg-gal__thumbs">
+            <button type="button" class="xg-gal__thumb is-active" aria-label="Show blue dashboard theme"><img src="assets/images/products/sales-crm/01.png" alt="" loading="lazy" decoding="async" /></button>
+            <button type="button" class="xg-gal__thumb" aria-label="Show rose dashboard theme"><img src="assets/images/products/sales-crm/02.png" alt="" loading="lazy" decoding="async" /></button>
+            <button type="button" class="xg-gal__thumb" aria-label="Show violet dashboard theme"><img src="assets/images/products/sales-crm/03.png" alt="" loading="lazy" decoding="async" /></button>
+            <button type="button" class="xg-gal__thumb" aria-label="Show red dashboard theme"><img src="assets/images/products/sales-crm/04.png" alt="" loading="lazy" decoding="async" /></button>
+            <button type="button" class="xg-gal__thumb" aria-label="Show dark dashboard theme"><img src="assets/images/products/sales-crm/05.png" alt="" loading="lazy" decoding="async" /></button>
+            <button type="button" class="xg-gal__thumb" aria-label="Show slate dashboard theme"><img src="assets/images/products/sales-crm/06.png" alt="" loading="lazy" decoding="async" /></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sales CRM story -->
+    <section class="xg-section xg-section--tight-top xg-hrms-intro" id="story">
+      <div class="container"><div class="xg-hrms-intro__grid">
+        <div><span class="xg-eyebrow">Built in-house</span><h2 class="xg-h2" data-xg="split">Why we built <span class="xg-hl">our own</span></h2></div>
+        <div class="xg-hrms-intro__text" data-xg="fade-up">
+          <p>We built our own CRM because no off-the-shelf tool matched the way our sales team actually works. Leads lived in spreadsheets, follow-ups lived in people’s heads, and every client conversation was spread across email, chat and calendar apps. Each tool did its job, but nobody could see the whole picture.</p>
+          <p>We also set ourselves one rule: the people who use the system every day should shape it. Instead of bending our process to fit a product, we built the product around our process, one request at a time, with feedback from the team that uses it daily.</p>
+        </div>
+      </div></div>
+    </section>
+
+    <section class="xg-section xg-hrms-features" aria-labelledby="sales-crm-lines-title">
+      <div class="container">
+        <div class="xg-hrms-features__head"><span class="xg-eyebrow">One system, many teams</span><h2 id="sales-crm-lines-title" class="xg-h2" data-xg="split">One system for several <span class="xg-hl">lines of business</span></h2></div>
+        <div class="xg-hf-grid">
+          <article class="xg-hf" data-xg="fade-up"><span class="xg-hf__num">01</span><h3>Separate spaces for each business</h3><p>One CRM now serves several lines of business, and each one gets its own space. Every team sees only its own leads, call records and counts, so nothing is mixed up and nobody has to filter through another team’s work.</p></article>
+          <article class="xg-hf" data-xg="fade-up" data-xg-delay="100"><span class="xg-hf__num">02</span><h3>Different forms and pipelines</h3><p>The forms and pipelines differ too. Some businesses need the full journey of approval, agreement and signing. Others work with a shorter pipeline where the manager can set any stage directly.</p></article>
+          <article class="xg-hf" data-xg="fade-up" data-xg-delay="200"><span class="xg-hf__num">03</span><h3>Business switcher</h3><p>A business switcher at the top of the page lets people move between the businesses they have been given, and adding a new line of business is a setting rather than a rebuild.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="xg-section xg-dark xg-hwhy" aria-labelledby="sales-crm-tracker-title">
+      <div class="xg-pixels xg-pixels--a" data-seed="53"></div>
+      <div class="container">
+        <div class="xg-hwhy__head"><span class="xg-eyebrow">At the heart of the system</span><h2 id="sales-crm-tracker-title" class="xg-h2" data-xg="split">The Lead Tracker and <span class="xg-hl">status pipeline</span></h2></div>
+        <p class="xg-final__text">The Lead Tracker is the heart of the system. Every lead sits in a clear stage, from the first submission through approval, agreement and signing to a finished installation, and each stage has its own tab with a live count. Employees submit their leads, managers review them and move them forward, and the system keeps a history of every change.</p>
+        <div class="xg-hwhy__grid">
+          <div class="xg-hwhy__item"><span>01</span><h3>Assignment and monthly view</h3><p>Managers can assign a lead to any team member, and a month picker shows only the leads added in a chosen month.</p></div>
+          <div class="xg-hwhy__item"><span>02</span><h3>Lead conversations and files</h3><p>Every lead has a comment thread where people can attach images and documents and pin the two notes that matter most.</p></div>
+          <div class="xg-hwhy__item"><span>03</span><h3>Ready-to-send approval details</h3><p>When a request needs to go to the approval team, one click copies the lead’s details in the exact format they expect.</p></div>
+          <div class="xg-hwhy__item"><span>04</span><h3>Consistent conversion numbers</h3><p>The dashboard reads its conversion rate from the same stage counts the tracker shows, so the two always agree.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="xg-section xg-hrms-features" aria-labelledby="sales-crm-conversations-title">
+      <div class="container">
+        <div class="xg-hrms-features__head"><span class="xg-eyebrow">Conversations beside the work</span><h2 id="sales-crm-conversations-title" class="xg-h2" data-xg="split">Email, chat and meetings <span class="xg-hl">in one place</span></h2></div>
+        <div class="xg-hf-grid">
+          <article class="xg-hf" data-xg="fade-up"><span class="xg-hf__num">01</span><h3>Email from the lead</h3><p>Each employee connects their own Gmail once, and from then on they can write to a client straight from the lead, with their own name and address showing on the message, and see their email history with that client right there.</p></article>
+          <article class="xg-hf" data-xg="fade-up" data-xg-delay="100"><span class="xg-hf__num">02</span><h3>Team chat</h3><p>Team chat sits beside the work, with direct messages, groups, file sharing and profile pictures, and new messages appear as desktop pop-ups.</p></article>
+          <article class="xg-hf" data-xg="fade-up" data-xg-delay="200"><span class="xg-hf__num">03</span><h3>Calendar and meeting reminders</h3><p>Meetings connect to Google Calendar and Google Meet, and follow-up reminders ring ten minutes before the scheduled time so no call is forgotten.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="xg-section xg-dark xg-hwhy" aria-labelledby="sales-crm-dashboard-title">
+      <div class="xg-pixels xg-pixels--a" data-seed="61"></div>
+      <div class="container">
+        <div class="xg-hwhy__head"><span class="xg-eyebrow">Numbers that matter</span><h2 id="sales-crm-dashboard-title" class="xg-h2" data-xg="split">Dashboard, commission <span class="xg-hl">and call records</span></h2></div>
+        <div class="xg-hwhy__grid">
+          <div class="xg-hwhy__item"><span>01</span><h3>Performance dashboard</h3><p>The dashboard gives each person the numbers that matter to them: leads generated, active deals, commission earned and conversion rate, for today, the last week, the last month, all time or any month they pick. Employees see their own results, and managers see the whole business.</p></div>
+          <div class="xg-hwhy__item"><span>02</span><h3>Private commission tracking</h3><p>Commission is tracked in the same place. Managers record it against a rate card, and every employee can see their own earnings but nobody else’s.</p></div>
+          <div class="xg-hwhy__item"><span>03</span><h3>Call records and working day</h3><p>Calls are logged with an outcome in a small desktop app as well as on the web, and daily counts follow US Eastern time, so the numbers match the working day of the clients we call.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="xg-section xg-hrms-intro" aria-labelledby="sales-crm-next-title">
+      <div class="container"><div class="xg-hrms-intro__grid">
+        <div><span class="xg-eyebrow">What comes next</span><h2 id="sales-crm-next-title" class="xg-h2" data-xg="split">What we learned, <span class="xg-hl">and what comes next</span></h2></div>
+        <div class="xg-hrms-intro__text" data-xg="fade-up">
+          <p>The biggest lesson was to build small and listen closely. Almost every feature in the CRM began as a message from the team saying “this keeps happening”, and the ones people use most are the ones that removed a repeated manual step.</p>
+          <p>We are not finished. Better reporting, more automation around follow-ups and smoother hand-offs between teams are next on the list. If you are building your own sales operations and want to compare notes on how we approached it, we would be glad to hear from you.</p>
+          <a href="/contact" class="xg-btn">Talk to our team</a>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- rts cta area start (xg final cta) -->
+    <section class="xg-final" aria-labelledby="xg-final-title">
+      <div class="xg-pixels xg-pixels--a" data-seed="101"></div>
+      <div class="xg-pixels xg-pixels--c" data-seed="117"></div>
+      <div class="container">
+        <h2 id="xg-final-title" class="xg-final__title" aria-label="Book a Free Consultation">Book a <span class="xg-hl">Free Consultation</span></h2>
+        <p class="xg-final__text">
+          Schedule a no-obligation consultation with our experts to discuss your business challenges. Discover how Xperts Global can help you scale, optimize, and grow faster.
+        </p>
+        <span class="xg-magnetic"><a href="/contact" class="xg-btn">Contact Us</a></span>
+      </div>
+    </section>
+    <!-- rts cta area end -->
+
+
+
+
+<!-- rts footer area start (xg footer) -->
+    <footer class="xg-footer">
+      <span class="xg-footer__mark" aria-hidden="true">XPERTS</span>
+      <div class="container">
+        <div class="xg-footer__top">
+          <p class="xg-footer__top-title">Let’s grow <span>together</span></p>
+          <div class="xg-footer__top-links">
+            <a class="xg-footer__contact-link" href="mailto:info@xperts-global.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg> info@xperts-global.com</a>
+            <a class="xg-footer__contact-link" href="tel:+15132754689"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> +1 513-275-4689</a>
+            <a href="/contact" class="xg-btn">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="xg-footer__cols" data-xg-reveal>
+          <div class="xg-reveal-item">
+            <a href="/" class="xg-footer__logo" aria-label="Xperts Global home"><img decoding="async" src="assets/Xperts Global Logo/SVG for Website/Header logo 2 white.svg" alt="Xperts Global" width="214" height="52" loading="lazy" /></a>
+            <p class="xg-footer__blurb">At Xperts Global, we deliver end-to-end digital transformation solutions, combining technology and strategy to empower organizations worldwide.</p>
+            <ul class="xg-footer__social">
+              <li><a href="https://www.facebook.com/share/1FEavzS9vF/" aria-label="Visit our Facebook page" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="https://www.linkedin.com/company/xpertsglobalinc/" aria-label="Visit our LinkedIn page" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a></li>
+            </ul>
+          </div>
+          <nav class="xg-reveal-item" aria-label="Services">
+            <p class="xg-footer__h">Services</p>
+            <ul class="xg-footer__list">
+              <li><a href="/service#b2b-b2c-sales">B2B &amp; B2C Sales</a></li>
+              <li><a href="/service#customer-chat-support">Customer &amp; Chat Support</a></li>
+              <li><a href="/service#partnership-approach">Partnership Approach</a></li>
+              <li><a href="/service#custom-crms-saas">Custom CRMs &amp; SaaS</a></li>
+              <li><a href="/service#software-application-development">Software &amp; Application Development</a></li>
+              <li><a href="/service#network-infrastructure-it">Network Infrastructure &amp; IT Services</a></li>
+              <li><a href="/service#quality-assurance-compliance">Quality Assurance &amp; Compliance</a></li>
+            </ul>
+          </nav>
+          <nav class="xg-reveal-item" aria-label="Quick Links">
+            <p class="xg-footer__h">Quick Links</p>
+            <ul class="xg-footer__list">
+              <li><a href="/">Home</a></li>
+              <li><a href="/service">Services</a></li>
+              <li><a href="/products">Products</a></li>
+              <li><a href="/pricing">Pricing</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="xg-reveal-item">
+            <p class="xg-footer__h">Our Location</p>
+            <p class="xg-footer__info xg-footer__addr"><b>Address</b><a href="https://maps.google.com/?q=4951+Nadine+Park+Drive,+Hilliard,+OH+43026" target="_blank" rel="noopener">4951 Nadine Park Drive, Hilliard, OH 43026</a></p>
+            <p class="xg-footer__info"><b>Office</b>MON - FRI 9AM - 5PM, SAT 10AM - 6PM</p>
+            <div class="xg-footer__map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3054.1540097976103!2d-83.1879270248708!3d40.04966387789992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8838946a895dc2e7%3A0x443e3e8ebc2cb2b4!2s4951%20Nadine%20Park%20Dr%2C%20Hilliard%2C%20OH%2043026%2C%20USA!5e0!3m2!1sen!2s!4v1756409553638!5m2!1sen!2s" title="Xperts Global office location" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="xg-footer__bottom">
+          <p class="xg-footer__copy">© 2025 Xperts Global. All rights reserved.</p>
+          <div class="xg-footer__bottom-right">
+            <ul class="xg-footer__legal">
+              <li><a href="/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+              <li><a href="/cookies-policy">Cookies Policy</a></li>
+            </ul>
+            <button type="button" class="xg-totop" aria-label="Back to top">
+              <svg class="xg-totop__ring" viewBox="0 0 52 52" aria-hidden="true"><circle class="bg" cx="26" cy="26" r="24"/><circle class="fg" cx="26" cy="26" r="24"/></svg>
+              <svg class="xg-totop__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- rts copyright area end -->
+
+
+
+<div id="anywhere-home"></div>
+
+<!-- progress area start -->
+<div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+            style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+        </path>
+    </svg>
+</div>
+<!-- progress area end -->
+
+
+<script defer src="assets/js/plugins/jquery.js"></script>
+<script defer src="assets/js/vendor/waw.js"></script>
+<script defer src="assets/js/vendor/jarallax.js"></script>
+
+<script defer src="assets/js/plugins/counter-up.js"></script>
+<script defer src="assets/js/vendor/waypoint.js"></script>
+<script defer src="assets/js/plugins/popup.js"></script>
+
+<script defer src="assets/js/plugins/swiper.js"></script>
+<script defer src="assets/js/plugins/svg-inject.js"></script>
+<script defer src="assets/js/plugins/metismenu.js"></script>
+<script defer src="assets/js/vendor/contact-form.js"></script>
+<script defer src="assets/js/vendor/bootstrap.min.js"></script>
+<script defer src="assets/js/main.js"></script>
+
+  <script src="assets/js/xg-pixels.js" defer></script>
+    <script src="assets/js/xg-header.js" defer></script>
+    <script src="assets/js/xg-footer.js" defer></script>
+    <script src="assets/js/xg-gallery.js" defer></script>
+    <script src="assets/js/xg-final.js" defer></script>
+    <script src="assets/js/xg-inner.js" defer></script>
+    <script src="assets/js/xg-values.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+    <script src="assets/js/xg-motion.js" defer></script>
+</body>
+
+</html>
