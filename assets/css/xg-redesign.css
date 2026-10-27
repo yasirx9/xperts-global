@@ -2005,6 +2005,19 @@ html.lenis, html.lenis body { height: auto; }
 .xg-pricing__card .xg-pricing__label { color: var(--xg-muted) !important; font-size: 14px; letter-spacing: .5px; margin-bottom: 18px; }
 .xg-pricing__card .xg-pricing__amount { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 28px; color: var(--xg-muted) !important; text-align: left; line-height: 1.3; }
 .xg-pricing__amount strong { font-size: 84px; line-height: 1; font-weight: 500; color: var(--xg-ink); }
+.xg-price-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.xg-price-card { display: flex; flex-direction: column; padding: 34px; border: 1px solid var(--xg-line); border-radius: var(--xg-radius-card); background: #fff; box-shadow: var(--xg-shadow); }
+.xg-price-card__num { color: var(--xg-red); font: 500 12px/1.4 var(--xg-mono); letter-spacing: .08em; }
+.xg-price-card h2 { margin: 18px 0 10px; }
+.xg-price-card__desc { min-height: 52px; color: var(--xg-muted); }
+.xg-price-card__amount { display: flex; align-items: baseline; gap: 8px; margin: 18px 0 22px; }
+.xg-price-card__amount strong { color: var(--xg-ink); font-size: 52px; font-weight: 600; line-height: 1; }
+.xg-price-card__amount span { max-width: 86px; color: var(--xg-muted); font-size: 14px; line-height: 1.35; }
+.xg-price-card__features { display: grid; gap: 12px; margin: 0 0 28px; padding: 22px 0 0; border-top: 1px solid var(--xg-line); list-style: none; }
+.xg-price-card__features li { display: flex; gap: 10px; align-items: flex-start; color: var(--xg-text); font-size: 14px; line-height: 1.5; }
+.xg-price-card__features li::before { content: "✓"; color: var(--xg-red); font-weight: 700; }
+.xg-price-card .xg-btn { margin-top: auto; align-self: flex-start; }
+.xg-price-note { margin: 28px auto 0; max-width: 720px; color: var(--xg-muted); text-align: center; }
 
 /* case studies */
 .xg-cases { background: var(--xg-soft); }
@@ -2023,6 +2036,8 @@ html.lenis, html.lenis body { height: auto; }
   .xg-pteaser__grid { gap: 18px; }
 }
 @media (max-width: 991px) {
+  .xg-price-grid { grid-template-columns: 1fr; }
+  .xg-price-card__desc { min-height: 0; }
   .xg-prod, .xg-pricing__inner, .xg-cases__grid, .xg-pteaser__grid { grid-template-columns: 1fr; }
   .xg-prod--rev .xg-prod__text { order: 0; }
   .xg-prods .container { gap: 88px; }
