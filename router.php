@@ -2,6 +2,11 @@
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $file = __DIR__ . $path;
 
+if ($path === '/blog' || $path === '/blog/') {
+  include __DIR__ . '/blog/index.html';
+  return true;
+}
+
 if ($path !== '/' && is_file($file)) {
   return false;
 }
