@@ -5,10 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Blog | Xperts Global</title>
 <meta name="description" content="Insights from Xperts Global on outsourced sales and support, AI automation, business websites and telecommunication services.">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#0B1426">
+<script src="/assets/js/xg-config.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/css/xg-blog-shared-theme.css">
 <style>
 /* Layout: 3D point-wave masthead → filterable post cards → long-form articles in a 68ch column. White / black / red, matching the homepage. */
 :root{
@@ -261,7 +263,7 @@ footer{border-top:1px solid var(--line);background:var(--ink)}
 
   // 3D point wave in masthead
   if(typeof THREE === "undefined") return;
-  var host = document.getElementById("wave"), renderer;
+  var host = document.getElementById("wave"), renderer; if(!host) return;
   try{ renderer = new THREE.WebGLRenderer({antialias: true, alpha: true}); }catch(e){ return; }
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
   host.appendChild(renderer.domElement);
@@ -276,7 +278,7 @@ footer{border-top:1px solid var(--line);background:var(--ink)}
 
   var COLS = 90, ROWS = 40, SP = .22, n = COLS * ROWS;
   var pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
-  var black = new THREE.Color("#141414"), red = new THREE.Color("#E10600");
+  var black = new THREE.Color((window.XG_CONFIG && window.XG_CONFIG.unifiedLightTheme === true) ? "#141414" : "#f4f4f4"), red = new THREE.Color("#E10600");
   for(var i = 0; i < COLS; i++) for(var j = 0; j < ROWS; j++){
     var k = (i * ROWS + j) * 3;
     pos[k] = (i - COLS / 2) * SP; pos[k + 1] = 0; pos[k + 2] = (j - ROWS / 2) * SP;

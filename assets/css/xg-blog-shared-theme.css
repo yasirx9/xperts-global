@@ -1,0 +1,46 @@
+/* Shared visual bridge for the new Blog pages.
+   It follows the same global switch used by the rest of the website. */
+html:not(.xg-blog-theme) {
+  color-scheme: dark;
+}
+html:not(.xg-blog-theme) body {
+  --ink: #0b1426;
+  --hull: #121d31;
+  --hull-2: #101a2c;
+  --line: rgba(255,255,255,.13);
+  --fg: #ffffff;
+  --muted: rgba(255,255,255,.68);
+  --signal: #e10600;
+  --flare-ink: #ffffff;
+  background: #0b1426;
+  color: #ffffff;
+}
+html:not(.xg-blog-theme) .nav {
+  background: rgba(11,20,38,.88);
+  border-color: rgba(255,255,255,.12);
+}
+html:not(.xg-blog-theme) .brand-logo { filter: brightness(0) invert(1); }
+html:not(.xg-blog-theme) .mast {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(225,6,0,.16), transparent 26rem),
+    linear-gradient(145deg, #0b1426 0%, #101d34 100%);
+}
+html:not(.xg-blog-theme) .card {
+  background: linear-gradient(150deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+  border-color: rgba(255,255,255,.14);
+  box-shadow: 0 26px 70px -38px rgba(0,0,0,.8);
+}
+html:not(.xg-blog-theme) .card:hover { border-color: rgba(225,6,0,.75); }
+html:not(.xg-blog-theme) .cover { background: #08101e; }
+html:not(.xg-blog-theme) .cover svg rect { fill: #08101e; }
+html:not(.xg-blog-theme) .chip { background: rgba(255,255,255,.04); }
+html:not(.xg-blog-theme) .chip[aria-pressed="true"] { background: #ffffff; color: #0b1426; }
+html:not(.xg-blog-theme) article.post { background: #0b1426; }
+html:not(.xg-blog-theme) .callout,
+html:not(.xg-blog-theme) th { background: rgba(255,255,255,.055); }
+html:not(.xg-blog-theme) .post-cta { background: linear-gradient(135deg, #e10600, #a80000); }
+html:not(.xg-blog-theme) .post-cta p { color: #ffffff; }
+html:not(.xg-blog-theme) footer { background: #08101e; }
+
+/* When unified light mode is enabled, restore the original Blog light palette. */
+html.xg-blog-theme { color-scheme: light; }
