@@ -1,0 +1,116 @@
+/*
+ * Unified light visual system
+ * Controlled by window.XG_CONFIG.unifiedLightTheme in assets/js/xg-config.js.
+ * This file only takes effect while <html> has the .xg-blog-theme class.
+ */
+html.xg-blog-theme {
+  --xg-navy: #ffffff;
+  --xg-ink: #0a0a0a;
+  --xg-muted: #5a5a5a;
+  --xg-red: #e10600;
+  --xg-line: #e2e2e2;
+  background: #ffffff;
+}
+
+html.xg-blog-theme body,
+html.xg-blog-theme .rts-section-gap,
+html.xg-blog-theme .xg-section { background: #ffffff; color: #0a0a0a; }
+
+html.xg-blog-theme .xg-header,
+html.xg-blog-theme .xg-header.xg-header--over-dark,
+html.xg-blog-theme .xg-header.is-scrolled {
+  background: rgba(255, 255, 255, .92) !important;
+  border-bottom: 1px solid #e2e2e2;
+  box-shadow: none !important;
+  backdrop-filter: blur(14px);
+}
+
+html.xg-blog-theme .xg-header .xg-nav__link,
+html.xg-blog-theme .xg-header .xg-nav__link:hover,
+html.xg-blog-theme .xg-header .xg-nav__link[aria-current="page"] { color: #0a0a0a !important; }
+html.xg-blog-theme .xg-header .xg-nav__link[aria-current="page"] { box-shadow: inset 0 -2px 0 #e10600; }
+html.xg-blog-theme .xg-header .xg-logo--dark { display: block !important; }
+html.xg-blog-theme .xg-header .xg-logo--light { display: none !important; }
+html.xg-blog-theme .xg-header .xg-burger { color: #0a0a0a; border-color: #e2e2e2; }
+
+html.xg-blog-theme .xg-page-hero,
+html.xg-blog-theme .xg-hero-dark,
+html.xg-blog-theme .xg-dark,
+html.xg-blog-theme .xg-final {
+  color: #0a0a0a !important;
+  background-color: #ffffff !important;
+  background-image:
+    radial-gradient(circle at 88% 20%, rgba(225, 6, 0, .08), transparent 25rem),
+    linear-gradient(#ffffff, #fafafa) !important;
+  border-color: #e2e2e2;
+}
+html.xg-blog-theme .xg-page-hero .xg-hero__bg,
+html.xg-blog-theme .xg-page-hero .xg-hero__mesh,
+html.xg-blog-theme .xg-page-hero .xg-hero__shade { opacity: .15; }
+html.xg-blog-theme .xg-page-hero h1,
+html.xg-blog-theme .xg-page-hero h2,
+html.xg-blog-theme .xg-page-hero h3,
+html.xg-blog-theme .xg-dark h1,
+html.xg-blog-theme .xg-dark h2,
+html.xg-blog-theme .xg-dark h3,
+html.xg-blog-theme .xg-dark h4,
+html.xg-blog-theme .xg-dark .xg-h1,
+html.xg-blog-theme .xg-dark .xg-h2,
+html.xg-blog-theme .xg-final__title { color: #0a0a0a !important; }
+html.xg-blog-theme .xg-dark p,
+html.xg-blog-theme .xg-final__text,
+html.xg-blog-theme .xg-page-hero__sub { color: #5a5a5a !important; }
+
+html.xg-blog-theme .xg-pfeat,
+html.xg-blog-theme .xg-pteaser__card,
+html.xg-blog-theme .xg-svc2-card,
+html.xg-blog-theme .xg-card,
+html.xg-blog-theme .xg-price-card {
+  background: #ffffff !important;
+  border-color: #e2e2e2 !important;
+  color: #0a0a0a !important;
+  box-shadow: 0 18px 45px -35px rgba(0, 0, 0, .45);
+}
+html.xg-blog-theme .xg-pfeat p,
+html.xg-blog-theme .xg-pteaser__card p,
+html.xg-blog-theme .xg-svc2-card p { color: #5a5a5a !important; }
+
+html.xg-blog-theme .xg-btn,
+html.xg-blog-theme .xg-btn--light,
+html.xg-blog-theme .xg-header__cta {
+  background: #e10600 !important;
+  border-color: #e10600 !important;
+  color: #ffffff !important;
+}
+html.xg-blog-theme .xg-btn:hover,
+html.xg-blog-theme .xg-btn--light:hover { transform: translateY(-2px); filter: brightness(.92); }
+
+html.xg-blog-theme .xg-footer,
+html.xg-blog-theme .xg-offcanvas {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+  border-top: 1px solid #e2e2e2;
+}
+html.xg-blog-theme .xg-footer::before,
+html.xg-blog-theme .xg-footer__mark { opacity: .04; }
+html.xg-blog-theme .xg-footer h2,
+html.xg-blog-theme .xg-footer h3,
+html.xg-blog-theme .xg-footer h4,
+html.xg-blog-theme .xg-footer a,
+html.xg-blog-theme .xg-footer__top-title,
+html.xg-blog-theme .xg-footer__contact-link { color: #0a0a0a !important; }
+html.xg-blog-theme .xg-footer p,
+html.xg-blog-theme .xg-footer__blurb,
+html.xg-blog-theme .xg-footer__copy { color: #5a5a5a !important; }
+html.xg-blog-theme .xg-footer__top,
+html.xg-blog-theme .xg-footer__bottom { border-color: #e2e2e2; }
+html.xg-blog-theme .xg-offcanvas__logo { filter: brightness(0); }
+
+html.xg-blog-theme .xg-pixels { opacity: .35; }
+html.xg-blog-theme .xg-progress__bar,
+html.xg-blog-theme .xg-hl,
+html.xg-blog-theme .xg-eyebrow { color: #e10600; }
+
+@media (max-width: 900px) {
+  html.xg-blog-theme .xg-header .xg-nav__list { background: #ffffff; border-color: #e2e2e2; }
+}
