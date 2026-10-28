@@ -32,6 +32,7 @@ html.xg-blog-theme .xg-header .xg-nav__link[aria-current="page"] { box-shadow: i
 html.xg-blog-theme .xg-header .xg-logo--dark { display: block !important; }
 html.xg-blog-theme .xg-header .xg-logo--light { display: none !important; }
 html.xg-blog-theme .xg-header .xg-burger { color: #0a0a0a; border-color: #e2e2e2; }
+html.xg-blog-theme .xg-header .xg-burger span { background: #0a0a0a !important; }
 
 html.xg-blog-theme .xg-page-hero,
 html.xg-blog-theme .xg-hero-dark,
@@ -105,12 +106,87 @@ html.xg-blog-theme .xg-footer__copy { color: #5a5a5a !important; }
 html.xg-blog-theme .xg-footer__top,
 html.xg-blog-theme .xg-footer__bottom { border-color: #e2e2e2; }
 html.xg-blog-theme .xg-offcanvas__logo { filter: brightness(0); }
+html.xg-blog-theme .side-bar.xg-offcanvas .close-icon-menu i,
+html.xg-blog-theme .side-bar.xg-offcanvas .mobile-menu-main nav ul li a,
+html.xg-blog-theme .side-bar.xg-offcanvas .mobile-menu-main nav ul li a:hover {
+  color: #0a0a0a !important;
+}
+html.xg-blog-theme .side-bar.xg-offcanvas .mobile-menu-main nav ul li { border-color: #e2e2e2 !important; }
 
 html.xg-blog-theme .xg-pixels { opacity: .35; }
 html.xg-blog-theme .xg-progress__bar,
 html.xg-blog-theme .xg-hl,
 html.xg-blog-theme .xg-eyebrow { color: #e10600; }
 
+/* Contrast contract: every surface explicitly receives readable foreground text. */
+html.xg-blog-theme :is(
+  .xg-section, .xg-page-hero, .xg-final, .xg-footer, .xg-offcanvas,
+  .xg-cta-band, .xg-ab-band, .xg-404, .xg-contact__info,
+  .xg-svc-side__cta, .broadband-hero, .broadband-form-visual-card,
+  .xg-testi__quote
+) :is(h1, h2, h3, h4, h5, h6, p, li, dt, dd, small, span, label, a) {
+  color: #0a0a0a !important;
+}
+html.xg-blog-theme :is(
+  .xg-cta-band, .xg-ab-band, .xg-404, .xg-contact__info,
+  .xg-svc-side__cta, .broadband-hero, .broadband-form-visual-card,
+  .xg-testi__quote
+) {
+  background-color: #ffffff !important;
+  background-image: radial-gradient(circle at 90% 15%, rgba(225, 6, 0, .08), transparent 22rem) !important;
+  color: #0a0a0a !important;
+  border-color: #e2e2e2 !important;
+}
+html.xg-blog-theme :is(
+  .xg-cta-band, .xg-ab-band, .xg-404, .xg-contact__info,
+  .xg-svc-side__cta, .broadband-hero, .broadband-form-visual-card,
+  .xg-testi__quote
+) :is(p, li, small, span) { color: #5a5a5a !important; }
+html.xg-blog-theme :is(.xg-page-hero, .xg-hero) :is(
+  .xg-hero__title, .xg-hero__lead, .xg-hero__typed, .xg-type,
+  .xg-hero__strip-label, .xg-marquee__item, .xg-glass__num, .xg-glass__label,
+  .xg-crumbs li, .xg-crumbs a, .xg-crumbs [aria-current]
+) { color: #0a0a0a !important; }
+html.xg-blog-theme :is(.xg-page-hero, .xg-hero) :is(.xg-hero__lead, .xg-hero__strip-label, .xg-marquee__item) { color: #5a5a5a !important; }
+
+/* Preserve white foreground on deliberate red action surfaces. */
+html.xg-blog-theme :is(.xg-btn, .xg-btn--light, .xg-header__cta, .xg-btn *, .xg-btn--light *, .xg-header__cta *, .xg-ribbon, .xg-ribbon *) { color: #ffffff !important; }
+
+/* Blog-inspired movement for every XG page: subtle, consistent and accessible. */
+html.xg-blog-theme .xg-page-hero::after {
+  content: "";
+  position: absolute;
+  right: clamp(18px, 7vw, 120px);
+  bottom: 24px;
+  width: clamp(90px, 15vw, 190px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #e10600 1.5px, transparent 1.6px);
+  background-size: 18px 18px;
+  opacity: .18;
+  mask-image: radial-gradient(circle, #000 10%, transparent 70%);
+  animation: xg-unified-drift 10s ease-in-out infinite alternate;
+}
+html.xg-blog-theme .xg-unified-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .72s ease, transform .72s cubic-bezier(.2,.8,.2,1);
+}
+html.xg-blog-theme .xg-unified-reveal.is-visible { opacity: 1; transform: translateY(0); }
+html.xg-blog-theme .xg-pfeat:hover,
+html.xg-blog-theme .xg-pteaser__card:hover,
+html.xg-blog-theme .xg-svc2-card:hover,
+html.xg-blog-theme .xg-price-card:hover { transform: translateY(-6px); }
+@keyframes xg-unified-drift {
+  from { transform: translate3d(-8px, -4px, 0) rotate(-4deg); }
+  to { transform: translate3d(10px, 8px, 0) rotate(5deg); }
+}
+
 @media (max-width: 900px) {
   html.xg-blog-theme .xg-header .xg-nav__list { background: #ffffff; border-color: #e2e2e2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.xg-blog-theme .xg-unified-reveal { opacity: 1; transform: none; transition: none; }
+  html.xg-blog-theme .xg-page-hero::after { animation: none; }
 }
