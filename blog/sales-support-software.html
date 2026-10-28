@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sales, Support &amp; Software Under One Roof | Xperts Global</title>
+<meta name="description" content="Why one partner for outsourced sales, customer support and software can help growing businesses reduce handoffs and measure results.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 3D point-wave masthead → filterable post cards → long-form articles in a 68ch column. White / black / red, matching the homepage. */
+:root{
+  --ink:#FFFFFF; --hull:#F4F4F4; --hull-2:#FFFFFF; --line:#E2E2E2;
+  --fg:#0A0A0A; --muted:#5A5A5A; --signal:#E10600; --flare-ink:#FFFFFF;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Instrument Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --step--1:clamp(.8rem,.77rem + .15vw,.875rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.125rem);
+  --step-1:clamp(1.2rem,1.1rem + .5vw,1.5rem);
+  --step-2:clamp(1.6rem,1.3rem + 1.2vw,2.4rem);
+  --step-3:clamp(2.3rem,1.6rem + 3vw,4.4rem);
+  --gutter:clamp(16px,4vw,48px); --max:1200px; --radius:18px;
+  color-scheme:light;
+}
+.band-dark,footer{--ink:#0A0A0A;--hull:#141414;--hull-2:#1A1A1A;--line:#2A2A2A;--fg:#FFFFFF;--muted:#A6A6A6;color:var(--fg)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--font-body);font-size:var(--step-0);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-family:var(--font-mono);font-size:var(--step--1);letter-spacing:.12em;text-transform:uppercase;color:var(--signal)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font:600 var(--step-0)/1 var(--font-body);padding:.95em 1.4em;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .2s}
+.btn-primary{background:var(--signal);color:var(--flare-ink)}
+.btn-primary:hover{transform:translateY(-2px)}
+
+/* progress */
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--signal);z-index:40}
+
+/* header */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--ink) 80%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem;position:relative}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font:800 1.15rem/1 var(--font-display)}
+.brand-logo{display:block;height:42px;width:auto;max-width:200px}
+.brand-fallback{display:flex;align-items:center;gap:.6rem}
+footer .brand-logo{filter:brightness(0) invert(1)}
+.brand-mark{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--signal);position:relative;overflow:hidden;flex:none}
+.brand-mark::before,.brand-mark::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--signal);transform:scaleX(.45)}
+.brand-mark::after{transform:scaleY(.35);border-color:var(--fg)}
+.brand b{color:var(--signal)}
+.nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+.nav ul a:hover,.nav ul a[aria-current]{color:var(--fg)}
+.nav ul a[aria-current]{box-shadow:inset 0 -2px 0 var(--signal)}
+.nav .btn{padding:.7em 1.1em;font-size:.92rem}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--fg);border-radius:10px;padding:.45rem .7rem;font:500 .9rem var(--font-body);cursor:pointer}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  .nav ul{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid var(--line);padding:.5rem var(--gutter) 1rem}
+  .nav ul a{display:block;padding:.75rem 0}
+  .nav ul:not(.open){display:none}
+  .nav .nav-cta{display:none}
+}
+
+/* masthead with 3D wave */
+.mast{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#wave{position:absolute;inset:0;pointer-events:none}
+#wave canvas{display:block;width:100%!important;height:100%!important}
+.mast .wrap{position:relative;padding-block:clamp(56px,10vh,110px) clamp(40px,6vh,72px);display:grid;gap:1.2rem}
+.mast h1{font-size:var(--step-3);font-weight:800;max-width:16ch}
+.mast h1 span{color:var(--signal)}
+.mast p{color:var(--muted);font-size:var(--step-1);max-width:52ch;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.chip{font:500 .9rem var(--font-body);padding:.55rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--ink);color:var(--fg);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.chip:hover{border-color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--ink);border-color:var(--fg)}
+
+/* cards */
+.listing{padding-block:clamp(48px,8vh,88px)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;perspective:1200px}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+.card{--rx:0deg;--ry:0deg;display:grid;grid-template-rows:auto 1fr;text-decoration:none;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--hull-2);transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .25s ease-out,border-color .25s,box-shadow .25s;min-width:0}
+.card:hover{border-color:var(--fg);box-shadow:0 30px 60px -30px rgba(0,0,0,.28)}
+.cover{aspect-ratio:16/8;max-width:100%;background:#0A0A0A;position:relative;overflow:hidden;display:grid;place-items:center}
+.cover svg{width:100%;height:100%;display:block}
+.card-body{padding:1.4rem 1.5rem 1.6rem;display:grid;gap:.7rem;align-content:start;transform:translateZ(24px)}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.meta .cat{color:var(--signal)}
+.card h2{font-size:var(--step-1);font-weight:600}
+.card p{color:var(--muted);font-size:.98rem}
+.card .read{font-weight:600;font-size:.95rem;margin-top:.2rem}
+.card:hover .read{color:var(--signal)}
+
+/* articles */
+article.post{border-top:1px solid var(--line);padding-block:clamp(64px,10vh,120px)}
+.post-head{max-width:760px;margin-inline:auto;display:grid;gap:1.1rem;margin-bottom:2.4rem}
+.post-head h2{font-size:var(--step-2);font-weight:800}
+.post-head .dek{font-size:var(--step-1);color:var(--muted);line-height:1.5}
+.byline{display:flex;align-items:center;gap:.8rem;font-size:.92rem;color:var(--muted)}
+.byline .av{width:38px;height:38px;border-radius:50%;background:var(--fg);color:var(--ink);display:grid;place-items:center;font:700 .8rem var(--font-display)}
+.prose{max-width:68ch;margin-inline:auto;display:grid;gap:1.15rem}
+.prose h3{font-size:1.45rem;font-weight:600;margin-top:1.4rem}
+.prose ul,.prose ol{margin:0;padding-left:1.2rem;display:grid;gap:.5rem}
+.prose li::marker{color:var(--signal)}
+.prose strong{font-weight:600}
+.callout{border-left:3px solid var(--signal);background:var(--hull);padding:1.1rem 1.3rem;border-radius:0 12px 12px 0}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th,td{text-align:left;padding:.75rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .74rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--hull)}
+tr:last-child td{border-bottom:0}
+.post-cta{max-width:68ch;margin:2.6rem auto 0;display:flex;flex-wrap:wrap;gap:1rem 1.6rem;align-items:center;justify-content:space-between;padding:1.4rem 1.6rem;border-radius:var(--radius);background:#0A0A0A;color:#FFFFFF}
+.post-cta p{font-weight:600;max-width:36ch}
+.back{display:block;max-width:68ch;margin:1.4rem auto 0;font-size:.92rem;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--signal)}
+
+/* footer */
+footer{border-top:1px solid var(--line);background:var(--ink)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;padding-block:3.5rem 2rem}
+.foot h4{font:500 .75rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .9rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.95rem}
+.foot a{text-decoration:none;opacity:.85}
+.foot a:hover{opacity:1;color:#FF2A1F}
+.foot p{color:var(--muted);font-size:.95rem;max-width:36ch;margin-top:1rem}
+.legal{border-top:1px solid var(--line);padding-block:1.2rem;color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media (max-width:800px){.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.foot{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Xperts Global home"><img class="brand-logo" src="https://www.xperts-global.com/assets/Xperts%20Global%20Logo/SVG%20for%20Website/Header%20logo%202.svg" alt="Xperts Global" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden><span class="brand-mark" aria-hidden="true"></span><span>Xperts <b>Global</b></span></span></a>
+    <ul id="menu">
+      <li><a href="/service">Services</a></li>
+      <li><a href="/service">Broadband</a></li>
+      <li><a href="/about">How we work</a></li>
+      <li><a href="/blog" aria-current="page">Blog</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" href="/contact">Free consultation</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</header>
+
+<main>
+<article class="post" id="one-partner" data-cat="services">
+    <div class="wrap">
+      <header class="post-head">
+        <div class="meta"><span class="cat">Our services</span><span>October 26, 2026</span><span>6 min read</span></div>
+        <h2>Sales, support and software under one roof: why it helps growing businesses</h2>
+        <p class="dek">Most growing companies hire separate vendors for sales, customer service and technology. Here is why bringing them together often produces better results.</p>
+        <div class="byline"><span class="av">XG</span><span>Xperts Global Team</span></div>
+      </header>
+      <div class="prose">
+        <p>When a business starts to grow, the same problems tend to appear at once. Leads arrive faster than the team can call them back. Customers wait too long for answers. The tools that worked for ten clients start to break at a hundred. The usual fix is to bring in a call center for one problem, a marketing agency for another and a software company for the third.</p>
+        <p>That approach can work, but it creates gaps. Each vendor sees only its own piece of the customer journey, and the business owner ends up managing the handoffs between them. At Xperts Global we built our services around a simpler idea: one partner that is accountable for the whole journey, from the first sales call to long-term customer care and the technology behind it.</p>
+
+        <h3>The five services we offer</h3>
+        <ul>
+          <li><strong>Sales Acceleration.</strong> Inbound and outbound sales teams trained on your product, focused on turning leads into revenue.</li>
+          <li><strong>Customer Support 24/7.</strong> Round-the-clock help by phone, chat and email so customers get answers when they need them.</li>
+          <li><strong>Software Development.</strong> Custom, scalable and secure applications built around how your business actually works.</li>
+          <li><strong>Digital Solutions.</strong> Digital marketing, branding and websites that strengthen your online presence and bring in qualified leads.</li>
+          <li><strong>Broadband and telecom services.</strong> Reliable connectivity for homes and businesses, with setup and support from our team.</li>
+        </ul>
+
+        <h3>Why one partner beats several vendors</h3>
+        <p><strong>Fewer handoffs.</strong> When the people answering your customers also understand your sales process and your software, issues are resolved in one conversation instead of being passed between companies.</p>
+        <p><strong>Shared data.</strong> Sales calls, support tickets and website activity all describe the same customers. Keeping them in one view shows patterns you would otherwise miss, such as a product question that keeps blocking sales.</p>
+        <p><strong>One set of goals.</strong> A single partner can be measured on the outcomes you care about, such as conversion rate, response time and customer satisfaction, instead of each vendor reporting on its own activity.</p>
+        <p><strong>Room to grow.</strong> You can start with one service, then add another when you are ready, without onboarding a new company and repeating the same training.</p>
+
+        <div class="callout"><p><strong>A practical example:</strong> a company launches a new product. Our sales team calls the leads, the support team handles questions after purchase, and our developers connect both teams to the client's CRM, so every call and ticket is logged in one place.</p></div>
+
+        <h3>How we start every engagement</h3>
+        <ol>
+          <li><strong>Free consultation.</strong> We learn your goals, current numbers and what is holding growth back.</li>
+          <li><strong>Engagement plan.</strong> You choose a flexible model, such as a dedicated team, shared seats or a project build.</li>
+          <li><strong>Launch.</strong> We train the team on your product, connect your tools and go live.</li>
+          <li><strong>Measure and improve.</strong> We report regularly on agreed KPIs and adjust where results lag.</li>
+        </ol>
+        <p>If your growth is being held back by missed leads, slow support or tools that no longer fit, a short conversation is usually enough to see which service would make the biggest difference first.</p>
+      </div>
+      <div class="post-cta"><p>Want to see which service fits your business first?</p><a class="btn btn-primary" href="index.html#consult">Book a free consultation</a></div>
+      <a class="back" href="/blog">↑ Back to all posts</a>
+    </div>
+  </article>
+</main>
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="/" aria-label="Xperts Global home"><img class="brand-logo" src="https://www.xperts-global.com/assets/Xperts%20Global%20Logo/SVG%20for%20Website/Header%20logo%202.svg" alt="Xperts Global" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden><span class="brand-mark" aria-hidden="true"></span><span>Xperts <b>Global</b></span></span></a>
+      <p>Sales, support and software solutions that help businesses grow faster and perform better.</p>
+    </div>
+    <div><h4>Blog topics</h4><ul><li><a href="/blog/sales-support-software">Our services</a></li><li><a href="/blog/ai-automation">AI automation</a></li><li><a href="/blog/business-website-2026">Websites</a></li><li><a href="/blog/business-telecom-services">Telecom</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="/">Home</a></li><li><a href="/service">Services</a></li><li><a href="/contact">Contact</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="https://www.linkedin.com/company/xpertsglobalinc/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/share/1FEavzS9vF/" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+  </div>
+  <div class="wrap legal"><span>© 2026 Xperts Global. All rights reserved.</span><span>4951 Nadine Park Dr, Hilliard, OH 43026, USA</span></div>
+</footer>
+<script>
+(function(){
+  var button = document.getElementById('menu-btn'), menu = document.getElementById('menu');
+  if (!button || !menu) return;
+  button.addEventListener('click', function(){ var open = menu.classList.toggle('open'); button.setAttribute('aria-expanded', open); button.textContent = open ? 'Close' : 'Menu'; });
+})();
+</script>
+</body>
+</html>

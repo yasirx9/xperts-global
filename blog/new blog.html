@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blog | Xperts Global</title>
+<meta name="description" content="Insights from Xperts Global on outsourced sales and support, AI automation, business websites and telecommunication services.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 3D point-wave masthead → filterable post cards → long-form articles in a 68ch column. White / black / red, matching the homepage. */
+:root{
+  --ink:#FFFFFF; --hull:#F4F4F4; --hull-2:#FFFFFF; --line:#E2E2E2;
+  --fg:#0A0A0A; --muted:#5A5A5A; --signal:#E10600; --flare-ink:#FFFFFF;
+  --font-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --font-body:"Instrument Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --step--1:clamp(.8rem,.77rem + .15vw,.875rem);
+  --step-0:clamp(1rem,.96rem + .2vw,1.125rem);
+  --step-1:clamp(1.2rem,1.1rem + .5vw,1.5rem);
+  --step-2:clamp(1.6rem,1.3rem + 1.2vw,2.4rem);
+  --step-3:clamp(2.3rem,1.6rem + 3vw,4.4rem);
+  --gutter:clamp(16px,4vw,48px); --max:1200px; --radius:18px;
+  color-scheme:light;
+}
+.band-dark,footer{--ink:#0A0A0A;--hull:#141414;--hull-2:#1A1A1A;--line:#2A2A2A;--fg:#FFFFFF;--muted:#A6A6A6;color:var(--fg)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--font-body);font-size:var(--step-0);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.02em;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font-family:var(--font-mono);font-size:var(--step--1);letter-spacing:.12em;text-transform:uppercase;color:var(--signal)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font:600 var(--step-0)/1 var(--font-body);padding:.95em 1.4em;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,background .2s}
+.btn-primary{background:var(--signal);color:var(--flare-ink)}
+.btn-primary:hover{transform:translateY(-2px)}
+
+/* progress */
+#progress{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--signal);z-index:40}
+
+/* header */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--ink) 80%,transparent);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem;position:relative}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font:800 1.15rem/1 var(--font-display)}
+.brand-logo{display:block;height:42px;width:auto;max-width:200px}
+.brand-fallback{display:flex;align-items:center;gap:.6rem}
+footer .brand-logo{filter:brightness(0) invert(1)}
+.brand-mark{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--signal);position:relative;overflow:hidden;flex:none}
+.brand-mark::before,.brand-mark::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--signal);transform:scaleX(.45)}
+.brand-mark::after{transform:scaleY(.35);border-color:var(--fg)}
+.brand b{color:var(--signal)}
+.nav ul{display:flex;gap:1.6rem;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+.nav ul a:hover,.nav ul a[aria-current]{color:var(--fg)}
+.nav ul a[aria-current]{box-shadow:inset 0 -2px 0 var(--signal)}
+.nav .btn{padding:.7em 1.1em;font-size:.92rem}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--fg);border-radius:10px;padding:.45rem .7rem;font:500 .9rem var(--font-body);cursor:pointer}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  .nav ul{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--ink);border-bottom:1px solid var(--line);padding:.5rem var(--gutter) 1rem}
+  .nav ul a{display:block;padding:.75rem 0}
+  .nav ul:not(.open){display:none}
+  .nav .nav-cta{display:none}
+}
+
+/* masthead with 3D wave */
+.mast{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#wave{position:absolute;inset:0;pointer-events:none}
+#wave canvas{display:block;width:100%!important;height:100%!important}
+.mast .wrap{position:relative;padding-block:clamp(56px,10vh,110px) clamp(40px,6vh,72px);display:grid;gap:1.2rem}
+.mast h1{font-size:var(--step-3);font-weight:800;max-width:16ch}
+.mast h1 span{color:var(--signal)}
+.mast p{color:var(--muted);font-size:var(--step-1);max-width:52ch;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.chip{font:500 .9rem var(--font-body);padding:.55rem 1rem;border-radius:999px;border:1px solid var(--line);background:var(--ink);color:var(--fg);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.chip:hover{border-color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--ink);border-color:var(--fg)}
+
+/* cards */
+.listing{padding-block:clamp(48px,8vh,88px)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;perspective:1200px}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+.card{--rx:0deg;--ry:0deg;display:grid;grid-template-rows:auto 1fr;text-decoration:none;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--hull-2);transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .25s ease-out,border-color .25s,box-shadow .25s;min-width:0}
+.card:hover{border-color:var(--fg);box-shadow:0 30px 60px -30px rgba(0,0,0,.28)}
+.cover{aspect-ratio:16/8;max-width:100%;background:#0A0A0A;position:relative;overflow:hidden;display:grid;place-items:center}
+.cover svg{width:100%;height:100%;display:block}
+.card-body{padding:1.4rem 1.5rem 1.6rem;display:grid;gap:.7rem;align-content:start;transform:translateZ(24px)}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.meta .cat{color:var(--signal)}
+.card h2{font-size:var(--step-1);font-weight:600}
+.card p{color:var(--muted);font-size:.98rem}
+.card .read{font-weight:600;font-size:.95rem;margin-top:.2rem}
+.card:hover .read{color:var(--signal)}
+
+/* articles */
+article.post{border-top:1px solid var(--line);padding-block:clamp(64px,10vh,120px)}
+.post-head{max-width:760px;margin-inline:auto;display:grid;gap:1.1rem;margin-bottom:2.4rem}
+.post-head h2{font-size:var(--step-2);font-weight:800}
+.post-head .dek{font-size:var(--step-1);color:var(--muted);line-height:1.5}
+.byline{display:flex;align-items:center;gap:.8rem;font-size:.92rem;color:var(--muted)}
+.byline .av{width:38px;height:38px;border-radius:50%;background:var(--fg);color:var(--ink);display:grid;place-items:center;font:700 .8rem var(--font-display)}
+.prose{max-width:68ch;margin-inline:auto;display:grid;gap:1.15rem}
+.prose h3{font-size:1.45rem;font-weight:600;margin-top:1.4rem}
+.prose ul,.prose ol{margin:0;padding-left:1.2rem;display:grid;gap:.5rem}
+.prose li::marker{color:var(--signal)}
+.prose strong{font-weight:600}
+.callout{border-left:3px solid var(--signal);background:var(--hull);padding:1.1rem 1.3rem;border-radius:0 12px 12px 0}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th,td{text-align:left;padding:.75rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .74rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--hull)}
+tr:last-child td{border-bottom:0}
+.post-cta{max-width:68ch;margin:2.6rem auto 0;display:flex;flex-wrap:wrap;gap:1rem 1.6rem;align-items:center;justify-content:space-between;padding:1.4rem 1.6rem;border-radius:var(--radius);background:#0A0A0A;color:#FFFFFF}
+.post-cta p{font-weight:600;max-width:36ch}
+.back{display:block;max-width:68ch;margin:1.4rem auto 0;font-size:.92rem;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--signal)}
+
+/* footer */
+footer{border-top:1px solid var(--line);background:var(--ink)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;padding-block:3.5rem 2rem}
+.foot h4{font:500 .75rem var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .9rem}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem;font-size:.95rem}
+.foot a{text-decoration:none;opacity:.85}
+.foot a:hover{opacity:1;color:#FF2A1F}
+.foot p{color:var(--muted);font-size:.95rem;max-width:36ch;margin-top:1rem}
+.legal{border-top:1px solid var(--line);padding-block:1.2rem;color:var(--muted);font-size:.85rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media (max-width:800px){.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.foot{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Xperts Global home"><img class="brand-logo" src="https://www.xperts-global.com/assets/Xperts%20Global%20Logo/SVG%20for%20Website/Header%20logo%202.svg" alt="Xperts Global" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden><span class="brand-mark" aria-hidden="true"></span><span>Xperts <b>Global</b></span></span></a>
+    <ul id="menu">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#broadband">Broadband</a></li>
+      <li><a href="index.html#process">How we work</a></li>
+      <li><a href="blog.html" aria-current="page">Blog</a></li>
+      <li><a href="index.html#consult">Contact</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" href="index.html#consult">Free consultation</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</header>
+
+<main>
+  <section class="mast">
+    <div id="wave" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">Xperts Global Blog</span>
+      <h1>Ideas for businesses that want to <span>grow faster.</span></h1>
+      <p>Practical guides on outsourced sales and support, AI automation, business websites and telecommunication services, written by the Xperts Global team.</p>
+      <div class="chips" role="group" aria-label="Filter posts by topic">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All posts</button>
+        <button class="chip" type="button" data-filter="services" aria-pressed="false">Our services</button>
+        <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI automation</button>
+        <button class="chip" type="button" data-filter="web" aria-pressed="false">Websites</button>
+        <button class="chip" type="button" data-filter="telecom" aria-pressed="false">Telecom</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="listing">
+    <div class="wrap cards" id="cards">
+      <a class="card" href="#one-partner" data-cat="services">
+        <div class="cover"><svg viewBox="0 0 400 200" aria-hidden="true"><rect width="400" height="200" fill="#0A0A0A"/><g fill="none" stroke="#FFFFFF" stroke-opacity=".25"><circle cx="200" cy="100" r="34"/><circle cx="200" cy="100" r="62"/><circle cx="200" cy="100" r="90"/></g><g fill="#E10600"><circle cx="200" cy="100" r="9"/></g><g fill="#FFFFFF"><circle cx="262" cy="100" r="5"/><circle cx="169" cy="46" r="5"/><circle cx="169" cy="154" r="5"/><circle cx="290" cy="100" r="3"/><circle cx="110" cy="100" r="3"/></g><path d="M200 100L262 100M200 100L169 46M200 100L169 154" stroke="#E10600" stroke-width="1.5"/></svg></div>
+        <div class="card-body"><div class="meta"><span class="cat">Our services</span><span>6 min read</span></div><h2>Sales, support and software under one roof: why it helps growing businesses</h2><p>How combining outsourced teams with custom technology removes handoffs and makes results easier to measure.</p><span class="read">Read post →</span></div>
+      </a>
+      <a class="card" href="#ai-automation" data-cat="ai">
+        <div class="cover"><svg viewBox="0 0 400 200" aria-hidden="true"><rect width="400" height="200" fill="#0A0A0A"/><g stroke="#FFFFFF" stroke-opacity=".22"><path d="M80 50L200 100L320 50M80 100L200 100L320 100M80 150L200 100L320 150M80 50L200 150M80 150L200 50M320 50L200 150M320 150L200 50"/></g><g fill="#FFFFFF"><circle cx="80" cy="50" r="6"/><circle cx="80" cy="100" r="6"/><circle cx="80" cy="150" r="6"/><circle cx="320" cy="50" r="6"/><circle cx="320" cy="100" r="6"/><circle cx="320" cy="150" r="6"/><circle cx="200" cy="50" r="6"/><circle cx="200" cy="150" r="6"/></g><circle cx="200" cy="100" r="13" fill="#E10600"/></svg></div>
+        <div class="card-body"><div class="meta"><span class="cat">AI automation</span><span>8 min read</span></div><h2>AI automation for small and mid-sized businesses: where to start</h2><p>The tasks worth automating first, the ones to keep human, and a four-step plan to launch without disrupting customers.</p><span class="read">Read post →</span></div>
+      </a>
+      <a class="card" href="#modern-website" data-cat="web">
+        <div class="cover"><svg viewBox="0 0 400 200" aria-hidden="true"><rect width="400" height="200" fill="#0A0A0A"/><rect x="90" y="36" width="220" height="132" rx="10" fill="none" stroke="#FFFFFF" stroke-opacity=".5"/><path d="M90 58H310" stroke="#FFFFFF" stroke-opacity=".5"/><circle cx="104" cy="47" r="3" fill="#E10600"/><circle cx="116" cy="47" r="3" fill="#FFFFFF" fill-opacity=".5"/><rect x="108" y="74" width="96" height="10" rx="3" fill="#FFFFFF"/><rect x="108" y="92" width="70" height="6" rx="3" fill="#FFFFFF" fill-opacity=".4"/><rect x="108" y="122" width="52" height="18" rx="9" fill="#E10600"/><circle cx="256" cy="110" r="30" fill="none" stroke="#E10600" stroke-width="1.5"/><ellipse cx="256" cy="110" rx="30" ry="11" fill="none" stroke="#FFFFFF" stroke-opacity=".5"/></svg></div>
+        <div class="card-body"><div class="meta"><span class="cat">Websites</span><span>7 min read</span></div><h2>What a business website needs in 2026 to win customers</h2><p>Speed, mobile design, search visibility and clear calls to action, plus how to use 3D and animation without slowing the site down.</p><span class="read">Read post →</span></div>
+      </a>
+      <a class="card" href="#telecom" data-cat="telecom">
+        <div class="cover"><svg viewBox="0 0 400 200" aria-hidden="true"><rect width="400" height="200" fill="#0A0A0A"/><g fill="none" stroke="#FFFFFF" stroke-opacity=".35"><path d="M150 110a70 70 0 0 1 100 0"/><path d="M125 85a105 105 0 0 1 150 0"/><path d="M100 60a140 140 0 0 1 200 0"/></g><path d="M175 135a35 35 0 0 1 50 0" fill="none" stroke="#E10600" stroke-width="2"/><circle cx="200" cy="160" r="7" fill="#E10600"/><path d="M0 182H400" stroke="#FFFFFF" stroke-opacity=".15"/></svg></div>
+        <div class="card-body"><div class="meta"><span class="cat">Telecom</span><span>7 min read</span></div><h2>Business telecommunication services explained: broadband, VoIP and staying connected</h2><p>How to choose the right internet connection and phone system, and why backup connectivity matters for support teams.</p><span class="read">Read post →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- POST 1 -->
+  <article class="post" id="one-partner" data-cat="services">
+    <div class="wrap">
+      <header class="post-head">
+        <div class="meta"><span class="cat">Our services</span><span>October 26, 2026</span><span>6 min read</span></div>
+        <h2>Sales, support and software under one roof: why it helps growing businesses</h2>
+        <p class="dek">Most growing companies hire separate vendors for sales, customer service and technology. Here is why bringing them together often produces better results.</p>
+        <div class="byline"><span class="av">XG</span><span>Xperts Global Team</span></div>
+      </header>
+      <div class="prose">
+        <p>When a business starts to grow, the same problems tend to appear at once. Leads arrive faster than the team can call them back. Customers wait too long for answers. The tools that worked for ten clients start to break at a hundred. The usual fix is to bring in a call center for one problem, a marketing agency for another and a software company for the third.</p>
+        <p>That approach can work, but it creates gaps. Each vendor sees only its own piece of the customer journey, and the business owner ends up managing the handoffs between them. At Xperts Global we built our services around a simpler idea: one partner that is accountable for the whole journey, from the first sales call to long-term customer care and the technology behind it.</p>
+
+        <h3>The five services we offer</h3>
+        <ul>
+          <li><strong>Sales Acceleration.</strong> Inbound and outbound sales teams trained on your product, focused on turning leads into revenue.</li>
+          <li><strong>Customer Support 24/7.</strong> Round-the-clock help by phone, chat and email so customers get answers when they need them.</li>
+          <li><strong>Software Development.</strong> Custom, scalable and secure applications built around how your business actually works.</li>
+          <li><strong>Digital Solutions.</strong> Digital marketing, branding and websites that strengthen your online presence and bring in qualified leads.</li>
+          <li><strong>Broadband and telecom services.</strong> Reliable connectivity for homes and businesses, with setup and support from our team.</li>
+        </ul>
+
+        <h3>Why one partner beats several vendors</h3>
+        <p><strong>Fewer handoffs.</strong> When the people answering your customers also understand your sales process and your software, issues are resolved in one conversation instead of being passed between companies.</p>
+        <p><strong>Shared data.</strong> Sales calls, support tickets and website activity all describe the same customers. Keeping them in one view shows patterns you would otherwise miss, such as a product question that keeps blocking sales.</p>
+        <p><strong>One set of goals.</strong> A single partner can be measured on the outcomes you care about, such as conversion rate, response time and customer satisfaction, instead of each vendor reporting on its own activity.</p>
+        <p><strong>Room to grow.</strong> You can start with one service, then add another when you are ready, without onboarding a new company and repeating the same training.</p>
+
+        <div class="callout"><p><strong>A practical example:</strong> a company launches a new product. Our sales team calls the leads, the support team handles questions after purchase, and our developers connect both teams to the client's CRM, so every call and ticket is logged in one place.</p></div>
+
+        <h3>How we start every engagement</h3>
+        <ol>
+          <li><strong>Free consultation.</strong> We learn your goals, current numbers and what is holding growth back.</li>
+          <li><strong>Engagement plan.</strong> You choose a flexible model, such as a dedicated team, shared seats or a project build.</li>
+          <li><strong>Launch.</strong> We train the team on your product, connect your tools and go live.</li>
+          <li><strong>Measure and improve.</strong> We report regularly on agreed KPIs and adjust where results lag.</li>
+        </ol>
+        <p>If your growth is being held back by missed leads, slow support or tools that no longer fit, a short conversation is usually enough to see which service would make the biggest difference first.</p>
+      </div>
+      <div class="post-cta"><p>Want to see which service fits your business first?</p><a class="btn btn-primary" href="index.html#consult">Book a free consultation</a></div>
+      <a class="back" href="#cards">↑ Back to all posts</a>
+    </div>
+  </article>
+
+  <!-- POST 2 -->
+  <article class="post" id="ai-automation" data-cat="ai">
+    <div class="wrap">
+      <header class="post-head">
+        <div class="meta"><span class="cat">AI automation</span><span>October 26, 2026</span><span>8 min read</span></div>
+        <h2>AI automation for small and mid-sized businesses: where to start</h2>
+        <p class="dek">AI can now answer customers, qualify leads and handle paperwork. The hard part is choosing what to automate first and keeping people in charge of what matters.</p>
+        <div class="byline"><span class="av">XG</span><span>Xperts Global Team</span></div>
+      </header>
+      <div class="prose">
+        <p>A few years ago, automation meant expensive software projects that only large companies could afford. Today, AI tools can read emails, hold natural conversations, summarize calls and update records in your CRM. That puts real automation within reach of businesses of almost any size.</p>
+        <p>The risk is starting in the wrong place. Automating a process that is already confusing just makes the confusion faster. The businesses that get the most from AI start with clear, repetitive tasks, measure the results and keep a human in the loop where judgment matters.</p>
+
+        <h3>Tasks that are usually worth automating first</h3>
+        <ul>
+          <li><strong>Answering common questions.</strong> AI chat and voice assistants can handle order status, opening hours, pricing questions and simple troubleshooting at any hour, and pass complex cases to a person.</li>
+          <li><strong>Lead qualification.</strong> AI can respond to new enquiries within seconds, ask a few qualifying questions and book a call with your sales team for the leads that fit.</li>
+          <li><strong>Ticket sorting and routing.</strong> Incoming emails and tickets can be tagged by topic and urgency and sent to the right person automatically.</li>
+          <li><strong>Call summaries and CRM updates.</strong> After each call, AI can write a short summary, log next steps and update the customer record, which saves agents time on every interaction.</li>
+          <li><strong>Document processing.</strong> Invoices, forms and applications can be read, checked and entered into your systems without manual typing.</li>
+          <li><strong>Follow-ups and reminders.</strong> Automated, personalized follow-ups after quotes, missed calls or abandoned carts keep leads from going cold.</li>
+        </ul>
+
+        <h3>What to keep human</h3>
+        <p>AI is good at speed and consistency. People are better at empathy, negotiation and unusual situations. We recommend keeping a person in charge of complaints and upset customers, final pricing and contract decisions, and anything with legal, financial or safety consequences. The best setups let AI handle the routine work so your team has more time for these conversations.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Area</th><th>AI handles</th><th>Your team handles</th></tr></thead>
+            <tbody>
+              <tr><td>Customer support</td><td>Common questions, ticket sorting, after-hours replies</td><td>Complaints, refunds, complex problems</td></tr>
+              <tr><td>Sales</td><td>Instant replies to new leads, qualifying questions, booking calls</td><td>Discovery calls, proposals, closing</td></tr>
+              <tr><td>Operations</td><td>Data entry, document checks, call summaries</td><td>Approvals, exceptions, quality review</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>A four-step plan to get started</h3>
+        <ol>
+          <li><strong>Map one process.</strong> Pick a single workflow, such as handling new website enquiries, and write down every step as it happens today.</li>
+          <li><strong>Choose the measure.</strong> Decide what success looks like before you build anything: response time, hours saved, leads booked or tickets resolved.</li>
+          <li><strong>Pilot with a safety net.</strong> Launch the automation for part of your traffic, with a clear way for customers to reach a person, and review conversations every week.</li>
+          <li><strong>Expand what works.</strong> Once the pilot meets its goal, roll it out fully and move on to the next process.</li>
+        </ol>
+
+        <h3>Protecting your data</h3>
+        <p>Any AI system that talks to customers or reads your records needs the same care as the rest of your business systems. Ask where data is stored, who can access it, whether it is used to train outside models and how long it is kept. Our automation projects follow the same quality and data security practices we apply to our support and software work.</p>
+
+        <h3>How Xperts Global can help</h3>
+        <p>Because we already run sales and support teams, we design AI automation around how customer conversations really happen. We can build AI chat and voice assistants, connect them to your CRM and helpdesk, and have our human agents step in whenever a customer needs a person. You get faster responses without losing the personal touch.</p>
+      </div>
+      <div class="post-cta"><p>Not sure which process to automate first? We'll help you pick one.</p><a class="btn btn-primary" href="index.html#consult">Talk to us about AI</a></div>
+      <a class="back" href="#cards">↑ Back to all posts</a>
+    </div>
+  </article>
+
+  <!-- POST 3 -->
+  <article class="post" id="modern-website" data-cat="web">
+    <div class="wrap">
+      <header class="post-head">
+        <div class="meta"><span class="cat">Websites</span><span>October 26, 2026</span><span>7 min read</span></div>
+        <h2>What a business website needs in 2026 to win customers</h2>
+        <p class="dek">Your website is often the first conversation a customer has with your business. These are the essentials that turn visitors into enquiries.</p>
+        <div class="byline"><span class="av">XG</span><span>Xperts Global Team</span></div>
+      </header>
+      <div class="prose">
+        <p>A good-looking website is no longer enough. Customers expect pages to load instantly on their phones, answer their questions quickly and make it obvious what to do next. Search engines reward the same things. Whether you are building a new site or improving an old one, these are the areas that make the biggest difference.</p>
+
+        <h3>1. Speed</h3>
+        <p>Visitors leave slow pages. Compress images, use modern formats such as WebP, load only the code each page needs and use reliable hosting with a content delivery network. Google's Core Web Vitals give you a clear way to measure loading speed, responsiveness and visual stability.</p>
+
+        <h3>2. Built for mobile first</h3>
+        <p>For most businesses, a large share of visitors arrive on a phone. Design for the small screen first: readable text without zooming, buttons large enough to tap and forms that are short and easy to complete.</p>
+
+        <h3>3. A clear message and a clear next step</h3>
+        <p>Within a few seconds, a visitor should understand what you do, who it is for and how to get started. Every page should have one main call to action, such as booking a consultation or requesting a quote, and contact details should be easy to find.</p>
+
+        <h3>4. Search visibility</h3>
+        <p>Search engine optimization starts with the basics: a unique title and description for each page, clear headings, fast loading and content that answers the questions your customers actually ask. A blog like this one helps by covering topics your customers search for.</p>
+
+        <h3>5. Trust signals</h3>
+        <p>Real client feedback, accurate numbers, a physical address, clear privacy information and a secure HTTPS connection all reassure visitors that they are dealing with a genuine, professional company. Keep these up to date, since outdated or inconsistent information quickly erodes trust.</p>
+
+        <h3>6. Interactive and 3D design, used carefully</h3>
+        <p>3D graphics and animation can make a brand memorable and explain ideas that are hard to show in a photo. Our own homepage uses an animated 3D globe to show how we connect businesses with customers. The key is to keep these effects light: load them after the main content, limit them on mobile devices and respect visitors who prefer reduced motion.</p>
+
+        <h3>7. Accessibility</h3>
+        <p>An accessible site works for people using screen readers, keyboards or larger text. Good color contrast, descriptive image text and labelled forms help every visitor and are increasingly expected by customers and regulators.</p>
+
+        <h3>8. Ongoing care</h3>
+        <p>A website is never truly finished. Plan for regular security updates, backups, content updates and performance checks, and review your analytics to see which pages lead to enquiries.</p>
+
+        <div class="callout"><p><strong>Quick website checklist:</strong> loads fast on a phone, states what you do in one sentence, has one clear call to action per page, shows how to contact you, uses HTTPS and is updated regularly.</p></div>
+
+        <h3>Our website services</h3>
+        <p>Xperts Global designs and builds business websites, from fast company sites and landing pages to interactive 3D experiences and custom web applications. Because we also run sales and support teams, we design websites around how leads are captured and followed up, and we can connect your forms directly to your CRM so no enquiry is missed.</p>
+      </div>
+      <div class="post-cta"><p>Ready for a website that brings in more enquiries?</p><a class="btn btn-primary" href="index.html#consult">Plan your website</a></div>
+      <a class="back" href="#cards">↑ Back to all posts</a>
+    </div>
+  </article>
+
+  <!-- POST 4 -->
+  <article class="post" id="telecom" data-cat="telecom">
+    <div class="wrap">
+      <header class="post-head">
+        <div class="meta"><span class="cat">Telecom</span><span>October 26, 2026</span><span>7 min read</span></div>
+        <h2>Business telecommunication services explained: broadband, VoIP and staying connected</h2>
+        <p class="dek">When the internet or phones go down, sales stop and customers wait. Here is how to choose connectivity your business can depend on.</p>
+        <div class="byline"><span class="av">XG</span><span>Xperts Global Team</span></div>
+      </header>
+      <div class="prose">
+        <p>Every part of a modern business runs on its connection: cloud software, video calls, payment systems and, above all, conversations with customers. Choosing the right telecommunication services is less about the fastest advertised speed and more about reliability, support and how well the services fit the way your team works.</p>
+
+        <h3>Choosing a broadband connection</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Connection</th><th>Strengths</th><th>Things to check</th></tr></thead>
+            <tbody>
+              <tr><td>Fiber</td><td>Highest speeds, equal upload and download on many plans, low latency</td><td>Availability at your address and installation time</td></tr>
+              <tr><td>Cable</td><td>Widely available, fast downloads</td><td>Upload speed, which matters for video calls and cloud backups</td></tr>
+              <tr><td>Fixed wireless and 5G</td><td>Quick to install, useful where cables are not available or as a backup</td><td>Signal strength at your location and data limits</td></tr>
+              <tr><td>DSL</td><td>Available in many areas</td><td>Speed falls with distance from the exchange</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>For most offices, upload speed and latency matter as much as download speed, because video meetings, VoIP calls and cloud tools all send data in both directions.</p>
+
+        <h3>VoIP and cloud phone systems</h3>
+        <p>Voice over IP (VoIP) runs phone calls over your internet connection instead of traditional phone lines. Cloud phone systems add features that used to need expensive hardware: call routing, menus, voicemail to email, call recording, and apps that let staff take business calls on their laptop or mobile from anywhere. For businesses with sales or support teams, this also makes it easier to connect calls to your CRM and measure performance.</p>
+
+        <h3>Why backup connectivity matters</h3>
+        <p>If your business depends on phones and online systems, a single connection is a single point of failure. A second connection from a different provider or technology, such as fixed wireless or 5G alongside fiber, can take over automatically if the main line goes down. For customer support teams, this can be the difference between a short slowdown and a full outage.</p>
+
+        <h3>Questions to ask any telecom provider</h3>
+        <ul>
+          <li>What speeds and uptime do you commit to in the service agreement?</li>
+          <li>How quickly do you respond to faults, and is support available outside business hours?</li>
+          <li>How long does installation take at our address?</li>
+          <li>Can we scale up bandwidth or phone lines as the team grows?</li>
+          <li>What equipment is included, and who maintains it?</li>
+        </ul>
+
+        <div class="callout"><p><strong>Tip:</strong> before you sign, test a VoIP call and a video meeting on the connection at the times your team is busiest. Real-world performance at peak hours tells you more than the advertised speed.</p></div>
+
+        <h3>Telecommunication services from Xperts Global</h3>
+        <p>We help homes and businesses get connected with broadband plans suited to their needs, and we support businesses with the connectivity behind their sales and support operations. Because we run 24/7 support teams ourselves, we understand how much a reliable connection matters. Talk to us about broadband plans, setup and support for your home or office.</p>
+      </div>
+      <div class="post-cta"><p>Need reliable broadband for your home or business?</p><a class="btn btn-primary" href="index.html#consult">Check plans</a></div>
+      <a class="back" href="#cards">↑ Back to all posts</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="index.html" aria-label="Xperts Global home"><img class="brand-logo" src="https://www.xperts-global.com/assets/Xperts%20Global%20Logo/SVG%20for%20Website/Header%20logo%202.svg" alt="Xperts Global" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand-fallback" hidden><span class="brand-mark" aria-hidden="true"></span><span>Xperts <b>Global</b></span></span></a>
+      <p>Sales, support and software solutions that help businesses grow faster and perform better.</p>
+    </div>
+    <div><h4>Blog topics</h4><ul><li><a href="#one-partner">Our services</a></li><li><a href="#ai-automation">AI automation</a></li><li><a href="#modern-website">Websites</a></li><li><a href="#telecom">Telecom</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#consult">Contact</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="https://www.linkedin.com/company/xpertsglobalinc/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://www.facebook.com/share/1FEavzS9vF/" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+  </div>
+  <div class="wrap legal"><span>© 2026 Xperts Global. All rights reserved.</span><span>4951 Nadine Park Dr, Hilliard, OH 43026, USA</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // menu
+  var menuBtn = document.getElementById("menu-btn"), menu = document.getElementById("menu");
+  menuBtn.addEventListener("click", function(){ var o = menu.classList.toggle("open"); menuBtn.setAttribute("aria-expanded", o); menuBtn.textContent = o ? "Close" : "Menu"; });
+
+  // reading progress
+  var bar = document.getElementById("progress");
+  function prog(){ var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = "scaleX(" + (h > 0 ? scrollY / h : 0) + ")"; }
+  addEventListener("scroll", prog, {passive: true}); prog();
+
+  // filter chips
+  var chips = document.querySelectorAll(".chip"), cards = document.querySelectorAll(".card"), posts = document.querySelectorAll("article.post");
+  chips.forEach(function(c){
+    c.addEventListener("click", function(){
+      var f = c.dataset.filter;
+      chips.forEach(function(x){ x.setAttribute("aria-pressed", x === c); });
+      cards.forEach(function(el){ el.hidden = !(f === "all" || el.dataset.cat === f); });
+      posts.forEach(function(el){ el.hidden = !(f === "all" || el.dataset.cat === f); });
+      if(typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+    });
+  });
+
+  // 3D tilt
+  if(!reduce && matchMedia("(hover: hover)").matches){
+    cards.forEach(function(card){
+      card.addEventListener("pointermove", function(e){
+        var r = card.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        card.style.setProperty("--ry", ((px - .5) * 10).toFixed(2) + "deg");
+        card.style.setProperty("--rx", ((.5 - py) * 8).toFixed(2) + "deg");
+      });
+      card.addEventListener("pointerleave", function(){ card.style.setProperty("--rx", "0deg"); card.style.setProperty("--ry", "0deg"); });
+    });
+  }
+
+  // reveals
+  if(typeof gsap !== "undefined" && !reduce){
+    gsap.from(".mast .wrap > *", {y: 24, opacity: 0, duration: .8, ease: "power3.out", stagger: .08, delay: .1});
+    if(typeof ScrollTrigger !== "undefined"){
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray(".card, .post-head, .prose > *").forEach(function(el){
+        gsap.from(el, {y: 36, opacity: .35, duration: .9, ease: "power3.out", scrollTrigger: {trigger: el, start: "top 90%"}});
+      });
+    }
+  }
+
+  // 3D point wave in masthead
+  if(typeof THREE === "undefined") return;
+  var host = document.getElementById("wave"), renderer;
+  try{ renderer = new THREE.WebGLRenderer({antialias: true, alpha: true}); }catch(e){ return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  host.appendChild(renderer.domElement);
+  var scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(50, 1, .1, 100);
+  camera.position.set(0, 3.2, 7.5); camera.lookAt(0, 0, 0);
+
+  var c = document.createElement("canvas"); c.width = c.height = 64;
+  var g = c.getContext("2d"), grd = g.createRadialGradient(32,32,0,32,32,32);
+  grd.addColorStop(0,"rgba(255,255,255,1)"); grd.addColorStop(.5,"rgba(255,255,255,.9)"); grd.addColorStop(1,"rgba(255,255,255,0)");
+  g.fillStyle = grd; g.fillRect(0,0,64,64);
+  var tex = new THREE.CanvasTexture(c);
+
+  var COLS = 90, ROWS = 40, SP = .22, n = COLS * ROWS;
+  var pos = new Float32Array(n * 3), col = new Float32Array(n * 3);
+  var black = new THREE.Color("#141414"), red = new THREE.Color("#E10600");
+  for(var i = 0; i < COLS; i++) for(var j = 0; j < ROWS; j++){
+    var k = (i * ROWS + j) * 3;
+    pos[k] = (i - COLS / 2) * SP; pos[k + 1] = 0; pos[k + 2] = (j - ROWS / 2) * SP;
+    var cc = Math.random() < .035 ? red : black;
+    col[k] = cc.r; col[k + 1] = cc.g; col[k + 2] = cc.b;
+  }
+  var geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute("color", new THREE.BufferAttribute(col, 3));
+  var pts = new THREE.Points(geo, new THREE.PointsMaterial({size: .07, map: tex, vertexColors: true, transparent: true, opacity: .55, depthWrite: false}));
+  pts.position.x = 3.2;
+  scene.add(pts);
+
+  function size(){
+    var w = host.clientWidth, h = host.clientHeight;
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    pts.position.x = w < 760 ? 0 : 3.2;
+    pts.material.opacity = w < 760 ? .3 : .55;
+  }
+  size(); addEventListener("resize", size);
+
+  var mx = 0; addEventListener("pointermove", function(e){ mx = e.clientX / innerWidth - .5; }, {passive: true});
+  var clock = new THREE.Clock(), visible = true;
+  var looping = false;
+  new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if(visible && !reduce && !looping){ looping = true; loop(); } }).observe(host);
+  function draw(t){
+    var a = geo.attributes.position.array;
+    for(var i = 0; i < COLS; i++) for(var j = 0; j < ROWS; j++){
+      var k = (i * ROWS + j) * 3, x = a[k], z = a[k + 2];
+      a[k + 1] = Math.sin(x * .7 + t * 1.1) * .35 + Math.cos(z * .9 + t * .8) * .3 + Math.sin((x + z) * .35 + t * .5) * .25;
+    }
+    geo.attributes.position.needsUpdate = true;
+    pts.rotation.y = -.35 + mx * .25;
+    renderer.render(scene, camera);
+  }
+  function loop(){ if(!visible){ looping = false; return; } draw(clock.getElapsedTime()); requestAnimationFrame(loop); }
+  if(reduce) draw(0);
+})();
+</script>
+</body>
+</html>
