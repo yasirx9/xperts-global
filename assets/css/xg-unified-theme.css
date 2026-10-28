@@ -190,3 +190,34 @@ html.xg-blog-theme .xg-price-card:hover { transform: translateY(-6px); }
   html.xg-blog-theme .xg-unified-reveal { opacity: 1; transform: none; transition: none; }
   html.xg-blog-theme .xg-page-hero::after { animation: none; }
 }
+
+/* Light-mode fixes for legacy button fills and the original blue homepage layers. */
+html.xg-blog-theme :is(.xg-btn, .xg-btn--light, .xg-header__cta) {
+  --_bg: #e10600;
+  --_fg: #ffffff;
+  --_fill: #e10600;
+  --_fill-fg: #ffffff;
+  --_border: #e10600;
+}
+html.xg-blog-theme :is(.xg-btn, .xg-btn--light, .xg-header__cta):hover,
+html.xg-blog-theme :is(.xg-btn, .xg-btn--light, .xg-header__cta):focus-visible {
+  --_fill: #e10600;
+  --_fill-fg: #ffffff;
+  color: #ffffff !important;
+}
+html.xg-blog-theme .xg-hero .xg-hero__bg,
+html.xg-blog-theme .xg-hero .xg-hero__mesh,
+html.xg-blog-theme .xg-hero .xg-hero__shade { background: transparent !important; opacity: 0 !important; }
+
+/* Canvas hosts are inserted by xg-unified-motion.js on all page heroes. */
+html.xg-blog-theme :is(.xg-page-hero, .xg-hero, .xg-404, .broadband-hero) { isolation: isolate; overflow: hidden; }
+html.xg-blog-theme .xg-dot-wave {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: .68;
+}
+html.xg-blog-theme :is(.xg-page-hero, .xg-hero, .xg-404, .broadband-hero) :is(.xg-page-hero__inner, .xg-hero__container, .xg-hero__strip, .container, .xg-404__content) { position: relative; z-index: 1; }
