@@ -32,6 +32,8 @@ html:not(.xg-blog-theme) .mast {
     radial-gradient(circle at 82% 20%, rgba(225,6,0,.16), transparent 26rem),
     linear-gradient(145deg, #0b1426 0%, #101d34 100%);
 }
+html:not(.xg-blog-theme) .mast h1 { color: #ffffff; }
+html:not(.xg-blog-theme) .mast h1 span { color: #e10600; }
 html:not(.xg-blog-theme) .card {
   background: #ffffff;
   border-color: #e2e2e2;
