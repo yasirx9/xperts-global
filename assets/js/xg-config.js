@@ -7,5 +7,5 @@ window.XG_CONFIG.preloader = false;
  * true  = unified light theme inspired by the new Blog design.
  * false = the original page-by-page visual treatment.
  */
-window.XG_CONFIG.unifiedLightTheme = true;
+window.XG_CONFIG.unifiedLightTheme = false;
 document.documentElement.classList.toggle('xg-blog-theme', window.XG_CONFIG.unifiedLightTheme === true);
