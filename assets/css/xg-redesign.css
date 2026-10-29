@@ -2064,7 +2064,8 @@ html.lenis, html.lenis body { height: auto; }
    28. Team + video testimonials
    ===================================================================== */
 .xg-team__head, .xg-vtesti__head { max-width: 640px; margin-bottom: 48px; }
-.xg-team__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 320px)); gap: 28px; }
+.xg-team__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
+.xg-team__grid .xg-team__card { flex: 0 1 calc((100% - 72px) / 4); min-width: 220px; max-width: 270px; }
 .xg-team__card { background: #fff; border-radius: var(--xg-radius-card); overflow: hidden; box-shadow: var(--xg-shadow); transition: transform var(--xg-dur) var(--xg-ease), box-shadow var(--xg-dur); }
 .xg-team__card:hover { transform: translateY(-6px); box-shadow: var(--xg-shadow-hover); }
 .xg-team__photo { position: relative; aspect-ratio: 32 / 38; background: linear-gradient(150deg, var(--xg-navy-2), var(--xg-navy)); display: grid; place-items: center; overflow: hidden; }
@@ -2105,7 +2106,11 @@ html.lenis, html.lenis body { height: auto; }
 .xg-vmodal__close:focus-visible { outline: none; box-shadow: var(--xg-focus); }
 @media (max-width: 575px) {
   .xg-team__grid, .xg-vtesti__grid { grid-template-columns: 1fr; justify-content: center; }
+  .xg-team__grid .xg-team__card { flex-basis: 100%; max-width: 340px; }
   .xg-vtesti__grid { grid-template-columns: minmax(0, 300px); }
+}
+@media (min-width: 576px) and (max-width: 800px) {
+  .xg-team__grid .xg-team__card { flex-basis: calc((100% - 24px) / 2); max-width: 340px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .xg-vtesti__btn { animation: none; }
