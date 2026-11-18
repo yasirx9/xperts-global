@@ -1,6 +1,13 @@
 
 <?php
 
+header("Content-Type: text/plain; charset=UTF-8");
+
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+  http_response_code(405);
+  exit("Method not allowed.");
+}
+
 // --- Database credentials ---
 $servername = "localhost";
 $username   = "u713075984_mhanzala";
@@ -20,7 +27,9 @@ if (is_file($erpnext_config_file)) {
 // --- Connect to database ---
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
-  die("Database connection failed: " . $conn->connect_error);
+  error_log("Website form database connection failed: " . $conn->connect_error);
+  http_response_code(500);
+  exit("We could not save your message. Please try again shortly.");
 }
 
 // --- Basic spam trap ---
@@ -182,8 +191,20 @@ $sms_opt_in = isset($_POST['sms_opt_in']) ? 1 : 0;
 
 // --- Save to database ---
 $stmt = $conn->prepare("INSERT INTO contacts (first_name, last_name, email, phone, message, agree, sms_opt_in) VALUES (?, ?, ?, ?, ?, ?, ?)");
+if (!$stmt) {
+  error_log("Website form database prepare failed: " . $conn->error);
+  http_response_code(500);
+  $conn->close();
+  exit("We could not save your message. Please try again shortly.");
+}
 $stmt->bind_param("sssssii", $first_name, $last_name, $email, $phone, $database_message, $agree, $sms_opt_in);
-$stmt->execute();
+if (!$stmt->execute()) {
+  error_log("Website form database insert failed: " . $stmt->error);
+  $stmt->close();
+  $conn->close();
+  http_response_code(500);
+  exit("We could not save your message. Please try again shortly.");
+}
 $stmt->close();
 
 // --- Send email ---
@@ -204,11 +225,11 @@ $broadband_details
 $headers = "From: $email\r\n";
 $headers .= "Reply-To: $email\r\n";
 
-if (mail($to, $subject, $body, $headers)) {
-  echo "Thank you for contacting us!";
-} else {
-  echo "There was an error sending the email.";
+if (!mail($to, $subject, $body, $headers)) {
+  error_log("Website form email notification failed after database save.");
 }
+
+echo "Thank you for contacting us!";
 
 $conn->close();
 ?>
